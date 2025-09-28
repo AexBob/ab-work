@@ -1,0 +1,1130 @@
+/* ===== ОБЩИЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ===== БОКОВОЕ МЕНЮ ===== */
+.side-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 80px;
+    background: #2c3e50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.side-nav ul {
+    list-style: none;
+}
+
+.side-nav li {
+    margin: 30px 0;
+}
+
+.side-nav a {
+    color: white;
+    text-decoration: none;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 10px;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
+    opacity: 0.7;
+}
+
+.language-switcher {
+    display: none;
+}
+
+/* ===== ОСНОВНОЕ СОДЕРЖИМОЕ ===== */
+.content {
+    margin-left: 80px;
+    min-height: 100vh;
+}
+
+.section {
+    display: none;
+    padding: 50px;
+    min-height: 100vh;
+}
+
+.section.active {
+    display: block;
+}
+
+.section>* {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ГЛАВНАЯ СТРАНИЦА (ALEX) ===== */
+.alex {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.alex-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    border: 5px solid #ecf0f1;
+    transition: transform 0.3s ease;
+}
+
+.alex-image:hover {
+    transform: scale(1.05);
+}
+
+.alex h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.alex p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    animation: fadeInUp 1s ease-out;
+}
+
+.alex-actions {
+    margin-top: 30px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #2573a7);
+}
+
+/* ===== РАЗДЕЛ "PAR MANI" ===== */
+.about-tabs-container {
+    margin-top: 24px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.about-tabs-nav {
+    display: flex;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    flex-wrap: wrap;
+}
+
+.about-tab-btn {
+    padding: 15px 15px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.95em;
+    color: #6c757d;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 100px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.about-tab-btn i {
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.about-tab-btn:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.about-tab-btn.active {
+    background: white;
+    color: #3498db;
+    border-bottom-color: #3498db;
+}
+
+.about-tab-btn.active i {
+    color: #3498db;
+}
+
+.about-tabs-content {
+    padding: 0;
+}
+
+.about-tab-pane {
+    display: none;
+    padding: 30px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.about-tab-pane.active {
+    display: block;
+}
+
+/* Ограничение ширины для вкладок */
+#work-tab,
+#education-tab,
+#languages-tab,
+#skills-tab {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#work-tab,
+#education-tab {
+    padding: 0;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+#languages-tab {
+    padding: 0 20px;
+}
+
+#skills-tab {
+    padding: 30px 0;
+}
+
+/* ===== ВКЛАДКА "DARBS" ===== */
+.experience-list {
+    margin: 15px 0 0 0;
+    max-width: 100%;
+}
+
+.experience-item {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 18px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    border-left: 4px solid #3498db;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 75px;
+}
+
+.experience-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: #3498db;
+}
+
+.experience-item-period-container {
+    width: 140px;
+    white-space: nowrap;
+    text-align: center;
+    padding-right: 15px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.experience-item-period {
+    font-size: 1em;
+    font-weight: 700;
+    color: #3498db;
+    margin-bottom: 3px;
+}
+
+.experience-item-duration {
+    background: #f8f9fa;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    color: #6c757d;
+    display: inline-block;
+}
+
+.experience-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.experience-item-company {
+    font-size: 1em;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 2px;
+}
+
+.experience-item-position {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.experience-item:hover .experience-item-duration {
+    background: #f8f9fa;
+    color: #6c757d;
+}
+
+/* ===== ВКЛАДКА "IZGLĪTĪBA" ===== */
+.education-section {
+    margin: 15px 0 0 0;
+    max-width: 100%;
+}
+
+.education-item {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 18px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    border-left: 4px solid #2ecc71;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 75px;
+}
+
+.education-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: #2ecc71;
+}
+
+.education-item h4 {
+    color: #2c3e50;
+    margin-bottom: 3px;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.education-item p {
+    color: #666;
+    margin: 2px 0;
+    font-size: 0.9em;
+}
+
+/* ===== ВКЛАДКА "VALODU PRASMES" ===== */
+.language-bars {
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+.language-bar {
+    margin-bottom: 25px;
+}
+
+.language-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.language-text {
+    font-size: 1.1em;
+    color: #2c3e50;
+}
+
+.language-level {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    background: #f8f9fa;
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.language-progress {
+    height: 8px;
+    background: #ecf0f1;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.language-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border-radius: 4px;
+    transition: width 1.5s ease-in-out;
+    transform-origin: left;
+}
+
+.language-bar.animated .language-progress-fill {
+    animation: slideIn 1.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ===== ВКЛАДКА "CITAS PRASMES" ===== */
+.skills-sidebar-layout {
+    display: flex;
+    gap: 40px;
+    max-width: 100%;
+    margin: 0;
+    min-height: 500px;
+}
+
+.skills-categories-sidebar {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.skill-category-btn {
+    padding: 18px 20px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-weight: normal;
+    font-size: 1em;
+    color: #2c3e50;
+    transition: all 0.1s ease;
+    border-left: 4px solid #3498db;
+    position: relative;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.skill-category-btn i {
+    font-size: 1.2em;
+    color: #6c757d;
+    width: 20px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.skill-category-btn:hover i {
+    color: #495057;
+}
+
+.skill-category-btn.active i {
+    color: #3498db;
+}
+
+.skill-category-btn span {
+    flex: 1;
+}
+
+.skill-category-btn:hover,
+.skill-category-btn.active {
+    background: #f8f9fa;
+    color: #3498db;
+    font-weight: normal;
+    transform: translateX(5px);
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.skills-content-area {
+    flex: 1;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 30px;
+    min-height: 400px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skills-content-pane {
+    display: none;
+    animation: fadeIn 0.4s ease-in;
+}
+
+.skills-content-pane.active {
+    display: block;
+}
+
+.skills-items-sidebar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-item-sidebar {
+    padding: 12px 0;
+    border-bottom: 1px solid #f8f9fa;
+    line-height: 1.5;
+    color: #555;
+    font-size: 1em;
+    position: relative;
+    padding-left: 25px;
+}
+
+.skill-item-sidebar:last-child {
+    border-bottom: none;
+}
+
+.skill-item-sidebar::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #3498db;
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+    top: 18px;
+    transition: all 0.3s ease;
+}
+
+.skill-item-sidebar:hover::before {
+    background: #2980b9;
+    transform: scale(1.3);
+}
+
+/* ===== ВКЛАДКА "HOBIJI UN INTERESES" ===== */
+.interests-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.interest-category {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    border-left: 4px solid #9b59b6;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.interest-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.interest-category-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.interest-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.interest-item {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+}
+
+.interest-item:hover {
+    background: #9b59b6;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(155, 89, 182, 0.4);
+    border-color: #9b59b6;
+}
+
+.interest-item:hover .interest-item-icon {
+    color: white;
+}
+
+.interest-item-icon {
+    font-size: 1.3em;
+    color: #9b59b6;
+    transition: color 0.3s ease;
+}
+
+.interest-item-text {
+    font-weight: 500;
+}
+
+.interest-single {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.interest-single:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #3498db;
+    color: white;
+}
+
+.interest-single:hover .interest-single-icon {
+    color: white;
+}
+
+.interest-single-icon {
+    font-size: 1.8em;
+    color: #3498db;
+    transition: color 0.3s ease;
+}
+
+.interest-single-text {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* Специальные стили для карточки семьи */
+.interest-single:first-child {
+    border-left-color: #05a19e;
+}
+
+.interest-single:first-child:hover {
+    background: #05a19e;
+    color: white;
+}
+
+.interest-single:first-child .interest-single-icon {
+    color: #05a19e;
+}
+
+.interest-single:first-child:hover .interest-single-icon {
+    color: white;
+}
+
+/* ===== РАЗДЕЛ "PORTFOLIO" ===== */
+.portfolio-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.tab-btn {
+    padding: 12px 25px;
+    border: none;
+    background: #f8f9fa;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.tab-btn:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.tab-btn.active {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+    height: 200px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-content h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.project-content p {
+    color: #7f8c8d;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    background: #3498db;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.skill-tag {
+    background: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 5px;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    background: #2980b9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== РАЗДЕЛ "KONTAKTI" ===== */
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-description {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.contact-card {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: #2980b9;
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8em;
+}
+
+.contact-info h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.contact-info span {
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+.contact-form {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.contact-form h3 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #27ae60, #219653);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.form-note {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* ===== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 768px) {
+    .side-nav {
+        width: 60px;
+    }
+
+    .content {
+        margin-left: 60px;
+    }
+
+    .section {
+        padding: 30px 20px;
+    }
+
+    .alex {
+        padding: 60px 0;
+    }
+
+    .alex h1 {
+        font-size: 2em;
+    }
+
+    .alex-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-tabs-nav {
+        flex-direction: column;
+    }
+
+    .about-tab-btn {
+        text-align: left;
+        border-bottom: 1px solid #e9ecef;
+        border-left: 3px solid transparent;
+        flex: none;
+        min-width: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .about-tab-btn.active {
+        border-left-color: #3498db;
+        border-bottom-color: #e9ecef;
+    }
+
+    .experience-item {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .experience-item-period-container {
+        min-width: auto;
+        text-align: center;
+    }
+
+    .experience-item-company {
+        font-size: 1.1em;
+    }
+
+    .experience-item-position {
+        font-size: 1em;
+    }
+
+    .education-item {
+        margin: 20px 0;
+        padding: 20px;
+    }
+
+    .education-section {
+        margin: 25px 0;
+    }
+
+    .language-bars {
+        max-width: 95%;
+    }
+
+    .language-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .language-level {
+        align-self: flex-start;
+    }
+
+    .skills-sidebar-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skills-categories-sidebar {
+        flex: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .skill-category-btn {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .skill-category-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .skills-content-area {
+        min-height: 300px;
+    }
+
+    .portfolio-tabs {
+        flex-direction: column;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-card {
+        margin: 0 10px;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-card {
+        padding: 25px 20px;
+    }
+
+    #work-tab,
+    #education-tab,
+    #languages-tab,
+    #skills-tab {
+        padding: 0 10px;
+    }
+
+    .interest-items {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .interest-item {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-tab-btn {
+        padding: 12px 10px;
+        font-size: 0.9em;
+    }
+
+    .skill-category-btn {
+        min-width: 120px;
+        font-size: 0.9em;
+        padding: 12px 10px;
+    }
+
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="lv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleksejs Babenko | Portfolio</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Боковое навигационное меню -->
+    <nav class="side-nav">
+        <ul>
+            <li><a href="#home" class="nav-link active" data-section="home" data-i18n="nav.home">Sākums</a></li>
+            <li><a href="#about" class="nav-link" data-section="about" data-i18n="nav.about">Par mani</a></li>
+            <li><a href="#portfolio" class="nav-link" data-section="portfolio" data-i18n="nav.portfolio">Portfolio</a>
+            </li>
+            <li><a href="#contact" class="nav-link" data-section="contact" data-i18n="nav.contact">Kontakti</a></li>
+        </ul>
+
+        <!-- Переключатель языков -->
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="lv">LV</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ru">RU</button>
+        </div>
+    </nav>
+
+    <!-- Основное содержимое -->
+    <main class="content">
+        <!-- Раздел: Главная -->
+        <section id="home" class="section active">
+            <!-- В разделе Alex -->
+            <div class="alex">
+                <img src="assets/images/photo.jpg" alt="Aleksejs Babenko" class="alex-image">
+                <h1 data-i18n="home.name">Aleksejs Babenko</h1>
+                <p data-i18n="home.title">Portfolio</p>
+
+                <!-- Кнопка скачать CV -->
+                <div class="alex-actions">
+                    <a href="assets/cv/Aleksejs_Babenko_CV.pdf" download class="download-btn">
+                        <i class="fas fa-download"></i>
+                        Lejupielādēt CV (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Раздел: Обо мне -->
+        <section id="about" class="section">
+            <!-- Вкладки для всех разделов -->
+            <div class="about-tabs-container">
+                <nav class="about-tabs-nav">
+                    <button class="about-tab-btn active" data-tab="work">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Darbs</span>
+                    </button>
+
+                    <button class="about-tab-btn" data-tab="education">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Izglītība</span>
+                    </button>
+
+                    <button class="about-tab-btn" data-tab="languages">
+                        <i class="fas fa-language"></i>
+                        <span>Valodu prasmes</span>
+                    </button>
+
+                    <button class="about-tab-btn" data-tab="skills">
+                        <i class="fas fa-cogs"></i>
+                        <span>Citas prasmes</span>
+                    </button>
+
+                    <button class="about-tab-btn" data-tab="interests">
+                        <i class="fas fa-heart"></i>
+                        <span>Hobiji un intereses</span>
+                    </button>
+                </nav>
+
+                <div class="about-tabs-content">
+                    <!-- Вкладка: Опыт работы -->
+                    <div id="work-tab" class="about-tab-pane active">
+                        <div class="experience-list" id="experience-cards">
+                            <!-- Контент будет загружен из JSON -->
+                        </div>
+                    </div>
+
+                    <!-- Вкладка: Образование -->
+                    <div id="education-tab" class="about-tab-pane">
+                        <div class="education-section">
+                            <div id="education-list">
+                                <!-- Контент будет загружен из JSON -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Вкладка: Языки -->
+                    <div id="languages-tab" class="about-tab-pane">
+                        <div class="language-bars" id="languages-list">
+                            <!-- Контент будет загружен из JSON -->
+                        </div>
+                    </div>
+
+                    <!-- Вкладка: Другие навыки -->
+                    <div id="skills-tab" class="about-tab-pane">
+                        <div id="skills-list">
+                            <div class="skills-sidebar-layout">
+                                <div class="skills-categories-sidebar">
+                                    <button class="skill-category-btn active"
+                                        data-category="Vadības un komunikācijas prasmes">
+                                        <i class="fas fa-users-cog"></i>
+                                        <span>Vadības un komunikācijas prasmes</span>
+                                    </button>
+
+                                    <button class="skill-category-btn" data-category="Datorprasmes">
+                                        <i class="fas fa-laptop-code"></i>
+                                        <span>Datorprasmes</span>
+                                    </button>
+
+                                    <button class="skill-category-btn" data-category="Tehniskās prasmes">
+                                        <i class="fas fa-tools"></i>
+                                        <span>Tehniskās prasmes</span>
+                                    </button>
+
+                                    <button class="skill-category-btn" data-category="Poligrāfijas prasmes">
+                                        <i class="fas fa-print"></i>
+                                        <span>Poligrāfijas prasmes</span>
+                                    </button>
+
+                                    <button class="skill-category-btn" data-category="Datorgrafika un dizains">
+                                        <i class="fas fa-palette"></i>
+                                        <span>Datorgrafika un dizains</span>
+                                    </button>
+
+                                    <button class="skill-category-btn" data-category="Papildu informācija">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>Papildu informācija</span>
+                                    </button>
+                                </div>
+
+                                <div class="skills-content-area">
+                                    <!-- Контент будет загружен из JSON -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Вкладка: Хобби и интересы -->
+                    <div id="interests-tab" class="about-tab-pane">
+                        <div class="interests-container">
+                            <!-- Семья на первом месте -->
+                            <div class="interest-single family-item">
+                                <i class="fa-solid fa-people-roof interest-single-icon"></i>
+                                <div class="interest-single-text">Laiks ar ģimeni</div>
+                            </div>
+
+                            <!-- Категория: Спорт -->
+                            <div class="interest-category">
+                                <h3 class="interest-category-title">Sports</h3>
+                                <div class="interest-items">
+                                    <div class="interest-item">
+                                        <i class="fas fa-running interest-item-icon"></i>
+                                        <span class="interest-item-text">Skriešana</span>
+                                    </div>
+                                    <div class="interest-item">
+                                        <i class="fas fa-dumbbell interest-item-icon"></i>
+                                        <span class="interest-item-text">Trenažieri</span>
+                                    </div>
+                                    <div class="interest-item">
+                                        <i class="fas fa-futbol interest-item-icon"></i>
+                                        <span class="interest-item-text">Futbols</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Изучение языков -->
+                            <div class="interest-single">
+                                <i class="fas fa-language interest-single-icon"></i>
+                                <div class="interest-single-text">Valodu apgūšana</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <!-- Navigation tabs will be inserted by JavaScript -->
+            <nav class="portfolio-tabs-nav"></nav>
+
+            <!-- Portfolio grid -->
+            <div class="portfolio-grid" id="projects-list"></div>
+        </section>
+
+        <!-- Раздел: Контакты -->
+        <section id="contact" class="section">
+            <div class="contact-container">
+                <h2 data-i18n="contact.title">Sazināties</h2>
+                <p class="contact-description" data-i18n="contact.description">
+                    Jūs varat sazināties ar mani, izmantojot šādas metodes:
+                </p>
+
+                <div class="contact-content">
+                    <!-- Контактные карточки -->
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>E-pasts</h3>
+                                <a href="mailto:alexbob@inbox.lv" data-i18n="contact.email">alexbob@inbox.lv</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Telefons</h3>
+                                <span data-i18n="contact.phone">(+371) 29597808</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Adrese</h3>
+                                <span data-i18n="contact.address">Rīga</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Форма обратной связи -->
+                    <div class="contact-form">
+                        <h3><i class="fas fa-paper-plane"></i> Sūtiet man ziņu</h3>
+                        <form action="https://formspree.io/f/your-form-id" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Jūsu vārds" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Jūsu e-pasts" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" placeholder="Jūsu ziņa" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Sūtīt ziņu
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/portfolio.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
