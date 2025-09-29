@@ -24,12 +24,23 @@
         {
           "degree": "Sociālo zinātņu maģistra grāds vadībzinātnē",
           "institution": "Transporta un sakaru institūts",
-          "period": "2003 – 2009"
+          "period": "2003 – 2009",
+          "additionalInfo": [
+            "Absolvēju ar izcilību.",
+            "Saņēmu 2 grantus:",
+            "par augstām sekmēm un zinātnisko darbību (Parex Banka fonds)",
+            "par izciliem sasniegumiem matemātikas priekšmetos (Haima Kordonska fonds, ASV)",
+            "Piedalījos 4 zinātniskās konferencēs un publicēju 3 zinātniskos rakstus."
+          ]
         },
         {
           "degree": "Radioelektronikas inženieris",
           "institution": "Rīgas Tehniskā koledža",
-          "period": "1991 – 1996"
+          "period": "1991 – 1996",
+          "additionalInfo": [
+            "5 gadu pilna inženiera programma",
+            "Konkurss iestājējos: 4,5 cilvēki uz vietu"
+          ]
         }
       ]
     },

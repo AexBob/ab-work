@@ -133,9 +133,59 @@ function renderEducation(educationItems) {
     container.innerHTML = educationItems.map(edu => `
         <div class="education-item">
             <h4>${edu.degree}</h4>
-            <p>${edu.institution} • ${edu.period}</p>
+            <p class="education-meta">${edu.institution} • ${edu.period}</p>
+            ${edu.additionalInfo ? `
+                <div class="education-additional">
+                    <button class="education-toggle">
+                        <i class="fas fa-chevron-down"></i>
+                        Papildus informācija
+                    </button>
+                    <div class="education-additional-content">
+                        <ul class="education-additional-list">
+                            ${edu.additionalInfo.map((item, index) => {
+        // Определяем подпункты грантов (3-й и 4-й элементы для магистра)
+        const isGrantSubitem = index === 2 || index === 3;
+        if (isGrantSubitem) {
+            return `<li class="education-additional-item subitem">${item}</li>`;
+        } else {
+            return `<li class="education-additional-item">${item}</li>`;
+        }
+    }).join('')}
+                        </ul>
+                    </div>
+                </div>
+            ` : ''}
         </div>
     `).join('');
+
+    // Добавляем обработчики для кнопок
+    setupEducationToggles();
+}
+
+// Обработчики для раскрытия дополнительной информации
+function setupEducationToggles() {
+    const toggles = document.querySelectorAll('.education-toggle');
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', function () {
+            const content = this.nextElementSibling;
+            const isActive = content.classList.contains('active');
+
+            // Закрываем все остальные
+            document.querySelectorAll('.education-additional-content').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.education-toggle').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Открываем/закрываем текущий
+            if (!isActive) {
+                content.classList.add('active');
+                this.classList.add('active');
+            }
+        });
+    });
 }
 
 function renderLanguages(languagesItems) {
@@ -361,13 +411,36 @@ function setupAboutTabs() {
     });
 }
 
+// Улучшение UX для формы обратной связи
+function setupFormFeedback() {
+    const contactForm = document.querySelector('.contact-form form');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            const submitBtn = this.querySelector('.submit-btn');
+            if (submitBtn) {
+                // Меняем текст и добавляем спиннер
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sūta...';
+                // Блокируем кнопку
+                submitBtn.disabled = true;
+
+                // Автоматическое восстановление кнопки через 10 секунд (на случай ошибки)
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Sūtīt ziņu';
+                    submitBtn.disabled = false;
+                }, 10000);
+            }
+        });
+    }
+}
+
 // Инициализация
 document.addEventListener('DOMContentLoaded', async function () {
     console.log('Страница загружена, начинаем инициализацию');
 
     // Сначала настраиваем навигацию (чтобы меню работало сразу)
     setupNavigation();
-    setupLanguageSwitcher();
+    // setupLanguageSwitcher(); // Временно отключено
 
     // Затем загружаем контент
     const data = await loadContent(currentLanguage);
@@ -378,6 +451,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Настраиваем табы
     setupAboutTabs();
+
+    // Настраиваем форму обратной связи
+    setupFormFeedback();
 
     console.log('Инициализация завершена');
 });
