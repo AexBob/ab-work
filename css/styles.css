@@ -1246,7 +1246,7 @@ body {
 .alex-image {
     width: 480px;
     height: 480px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     object-fit: cover;
     /* border: 5px solid #ecf0f1; */
     flex-shrink: 0;
@@ -1317,10 +1317,4 @@ body {
     .personal-quote {
         text-align: center;
     }
-}
-
-
-
-#home {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
 }
