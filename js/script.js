@@ -62,6 +62,9 @@ function updateContent(data) {
     if (data.home) {
         updateElementsByDataAttr('home.name', data.home.name);
         updateElementsByDataAttr('home.title', data.home.title);
+        // Добавляем новые поля:
+        updateElementsByDataAttr('home.mainTitle', data.home.mainTitle);
+        updateElementsByDataAttr('home.description', data.home.description);
     }
 
     // About section - with existence checks
