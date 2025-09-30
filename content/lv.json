@@ -166,13 +166,51 @@
         "period": "2024 – 2025",
         "position": "Iespiedējs",
         "company": "Pro-Baltic SIA",
-        "duration": "1 gads un 4 mēneši"
+        "duration": "1 gads un 4 mēneši",
+        "additionalInfo": [
+          {
+            "type": "list",
+            "items": [
+              "Īsā laikā apguvu specializētās poligrāfijas iekārtas (Mimaki) darbību visos tehniskajos aspektos un niansēs.",
+              "Ierobežotais uzdevumu klāsts kļuva par izaicinājumu meklēt optimizācijas iespējas.",
+              "Ieviestie uzlabojumi ļāva: paaugstināt darba procesu efektivitāti, samazināt pasūtījumu izpildes termiņus, uzlabot produkcijas kvalitāti un kontroles līmeni."
+            ]
+          }
+        ]
       },
       {
         "period": "2012 – 2023",
         "position": "Tehniskais speciālists",
         "company": "Optibet SIA",
-        "duration": "11 gadi un 2 mēneši"
+        "duration": "11 gadi un 2 mēneši",
+        "additionalInfo": [
+          {
+            "type": "text",
+            "content": "Darbs starptautiskā kompānijā man sniedza daudzpusīgāko pieredzi. Veicu gan individuālus uzdevumus, gan komandu projektus."
+          },
+          {
+            "type": "text",
+            "content": "Galvenie pienākumi un sasniegumi:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Jaunu filiāļu atvēršana: projektēšana, tehniskais aprīkojums, uzstādīšana un nodošana ekspluatācijā",
+              "Sadarbība ar dažādām uzņēmuma nodaļām un ārējiem partneriem",
+              "Iekšējo projektu izstrāde Windows, Linux un Android vidē",
+              "Kases sistēmu uzstādīšana un konfigurēšana",
+              "Videoreklāmu un mārketinga materiālu izstrāde",
+              "Iekārtu stāvokļa monitorings un datu dublēšana",
+              "Bāru preču apgādes organizēšana un uzskaite",
+              "Konsultēšana, tehniskais atbalsts un personāla apmācība",
+              "Regulāri darba komandējumi pa Latviju un Lietuvu"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Ar saviem kolēģiem mēs bijām ne tikai kolektīvs, bet arī īsta komanda — saliedēta, draudzīga un profesionāla. Tieši to es uzskatu par savu lielāko ieguvumu."
+          }
+        ]
       },
       {
         "period": "2009 – 2022",

@@ -124,10 +124,46 @@ function renderExperience(experience) {
             <div class="experience-item-content">
                 <div class="experience-item-company">${exp.company}</div>
                 <div class="experience-item-position">${exp.position}</div>
+                ${exp.additionalInfo ? `
+                    <div class="experience-additional">
+                        <button class="experience-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                            Papildus informācija
+                        </button>
+                        <div class="experience-additional-content">
+                            <div class="experience-additional-content-inner">
+                                ${Array.isArray(exp.additionalInfo) ?
+                exp.additionalInfo.map(item => {
+                    // Старый формат (просто строки)
+                    if (typeof item === 'string') {
+                        return `<div class="experience-text">${item}</div>`;
+                    }
+                    // Новый формат (объекты с type)
+                    else if (item.type === 'text') {
+                        return `<div class="experience-text">${item.content}</div>`;
+                    } else if (item.type === 'list') {
+                        return `
+                                                <ul class="experience-additional-list">
+                                                    ${item.items.map(listItem => `
+                                                        <li class="experience-additional-item">${listItem}</li>
+                                                    `).join('')}
+                                                </ul>
+                                            `;
+                    }
+                    return '';
+                }).join('')
+                : ''}
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
             </div>
         </div>
     `).join('');
+
+    setupExperienceToggles();
 }
+
 
 function renderEducation(educationItems) {
     const container = document.getElementById('education-list');
@@ -509,3 +545,28 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     console.log('Инициализация завершена');
 });
+
+function setupExperienceToggles() {
+    const toggles = document.querySelectorAll('.experience-toggle');
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', function () {
+            const content = this.nextElementSibling;
+            const isActive = content.classList.contains('active');
+
+            // Закрываем все остальные
+            document.querySelectorAll('.experience-additional-content').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.experience-toggle').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Открываем/закрываем текущий
+            if (!isActive) {
+                content.classList.add('active');
+                this.classList.add('active');
+            }
+        });
+    });
+}

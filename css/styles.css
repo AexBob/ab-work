@@ -1396,3 +1396,92 @@ body {
         padding: 20px;
     }
 }
+
+/* ===== ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ ДЛЯ ОПЫТА РАБОТЫ ===== */
+.experience-additional {
+    margin-top: 15px;
+}
+
+.experience-toggle {
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: bold;
+    font-style: italic;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.experience-toggle:hover {
+    color: #3498db;
+}
+
+.experience-toggle i {
+    font-size: 0.9em;
+    transition: transform 0.3s ease;
+}
+
+.experience-toggle.active i {
+    transform: rotate(180deg);
+}
+
+.experience-additional-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 0 15px;
+}
+
+.experience-additional-content.active {
+    max-height: 500px;
+    opacity: 1;
+    padding: 12px 15px;
+    margin-top: 8px;
+}
+
+.experience-additional-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-additional-item {
+    padding: 3px 0;
+    color: #555;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 15px;
+}
+
+.experience-additional-item::before {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Стили для текста без маркеров */
+.experience-text {
+    padding: 4px 0;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Отступы между элементами */
+.experience-additional-content-inner>* {
+    margin-bottom: 4px;
+}
+
+.experience-additional-content-inner>*:last-child {
+    margin-bottom: 0;
+}
