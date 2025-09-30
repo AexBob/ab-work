@@ -169,11 +169,19 @@
         "duration": "1 gads un 4 mēneši",
         "additionalInfo": [
           {
+            "type": "text",
+            "content": "Īsā laikā apguvu specializētās poligrāfijas iekārtas (Mimaki) darbību visos tehniskajos aspektos un niansēs."
+          },
+          {
+            "type": "text",
+            "content": "Ierobežotais uzdevumu klāsts kļuva par izaicinājumu meklēt optimizācijas iespējas. Ieviestie uzlabojumi ļāva:"
+          },
+          {
             "type": "list",
             "items": [
-              "Īsā laikā apguvu specializētās poligrāfijas iekārtas (Mimaki) darbību visos tehniskajos aspektos un niansēs.",
-              "Ierobežotais uzdevumu klāsts kļuva par izaicinājumu meklēt optimizācijas iespējas.",
-              "Ieviestie uzlabojumi ļāva: paaugstināt darba procesu efektivitāti, samazināt pasūtījumu izpildes termiņus, uzlabot produkcijas kvalitāti un kontroles līmeni."
+              "Paaugstināt darba procesu efektivitāti",
+              "Samazināt pasūtījumu izpildes termiņus",
+              "Uzlabot produkcijas kvalitāti un kontroles līmeni"
             ]
           }
         ]
