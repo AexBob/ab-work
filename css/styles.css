@@ -104,7 +104,7 @@ body {
     background: url('/assets/images/background_pages.jpg') center/cover;
     background-color: rgba(255, 255, 255, 0.6);
 
-        background-blend-mode: overlay;
+    background-blend-mode: overlay;
 }
 
 
@@ -1360,4 +1360,39 @@ body {
 
     #work-tab,
     #education-tab,
-    #languages-tab
+    #languages-tab,
+    #skills-tab {
+        padding: 0 10px;
+    }
+
+    .interest-items {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .interest-item {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-tab-btn {
+        padding: 12px 10px;
+        font-size: 0.9em;
+    }
+
+    .skill-category-btn {
+        min-width: 120px;
+        font-size: 0.9em;
+        padding: 12px 10px;
+    }
+
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+}

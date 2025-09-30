@@ -1,11 +1,231 @@
 /* ===== PORTFOLIO STYLES ===== */
 
-/* Portfolio section spacing */
 #portfolio.section {
     padding-top: 30px;
 }
 
-/* Navigation tabs - same style as About section */
+/* ===== COMMON GRID STYLES ===== */
+.portfolio-grid {
+    column-count: 3;
+    column-gap: 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.video-grid,
+.gif-grid {
+    display: grid !important;
+    width: 100% !important;
+    column-count: 1 !important;
+    margin: 0 auto !important;
+    gap: 15px;
+}
+
+.video-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+    row-gap: 30px;
+}
+
+.gif-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 25px !important;
+    width: 70% !important;
+    align-items: end;
+}
+
+/* ===== COMMON ITEM STYLES ===== */
+.portfolio-item,
+.portfolio-item-small,
+.video-item,
+.gif-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.portfolio-item:hover,
+.portfolio-item-small:hover,
+.gif-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.portfolio-item-double {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.portfolio-item-small {
+    /* наследует базовые стили от .portfolio-item */
+}
+
+/* ===== IMAGE STYLES ===== */
+.portfolio-image,
+.video-poster,
+.video-preview,
+.gif-image,
+.gif-preview,
+.gif-animation {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-image {
+    height: auto;
+}
+
+.portfolio-item:hover .portfolio-image {
+    transform: scale(1.02);
+}
+
+.video-poster,
+.video-preview,
+.gif-preview,
+.gif-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video-preview {
+    opacity: 0;
+}
+
+/* ===== VIDEO SPECIFIC STYLES ===== */
+.video-item {
+    cursor: pointer;
+    aspect-ratio: 16/9;
+    background: #000;
+    margin-bottom: 0;
+}
+
+/* ===== GIF SPECIFIC STYLES ===== */
+.gif-item {
+    background: #000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.gif-item.square {
+    aspect-ratio: 4/3;
+    grid-column: span 1;
+}
+
+.gif-item.wide {
+    aspect-ratio: 2.5/1;
+    grid-column: span 1;
+}
+
+.gif-item.ultra-wide {
+    aspect-ratio: 4.5/1;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 55%;
+    justify-self: center;
+    margin-top: 25px;
+}
+
+/* GIF Preview/Animation States - ВАЖНО для работы GIF */
+.gif-preview {
+    display: block;
+    opacity: 1;
+}
+
+.gif-animation {
+    display: none;
+    opacity: 1;
+}
+
+.gif-item.playing .gif-preview {
+    display: none;
+}
+
+.gif-item.playing .gif-animation {
+    display: block;
+}
+
+/* ===== CONTROL BUTTONS ===== */
+.play-overlay,
+.play-btn,
+.pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(101, 101, 101);
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+}
+
+.play-overlay {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.play-overlay:hover,
+.play-btn:hover,
+.pause-btn:hover {
+    opacity: 1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.video-item:hover .play-overlay {
+    opacity: 0;
+}
+
+.gif-controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+    padding: 8px 15px;
+    border-radius: 25px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.gif-item:hover .gif-controls {
+    opacity: 1;
+}
+
+/* Скрываем кнопки когда GIF играет */
+.gif-item.playing .gif-controls {
+    opacity: 0;
+}
+
+.gif-item.playing:hover .gif-controls {
+    opacity: 0.8;
+}
+
+/* ===== TABS NAVIGATION ===== */
 .portfolio-tabs-nav {
     display: flex;
     background: #f8f9fa;
@@ -57,137 +277,7 @@
     color: #3498db;
 }
 
-/* 3-column Masonry layout for static portfolio */
-.portfolio-grid {
-    column-count: 3;
-    column-gap: 20px;
-    width: 70%;
-    margin: 0 auto;
-}
-
-.portfolio-item {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.portfolio-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.portfolio-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover .portfolio-image {
-    transform: scale(1.02);
-}
-
-/* Container for items 8 and 9 side by side */
-.portfolio-item-double {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.portfolio-item-small {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.portfolio-item-small:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.portfolio-item-small .portfolio-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* ===== VIDEO PORTFOLIO STYLES ===== */
-.video-grid {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 15px 15px;
-    /* горизонталь 15px, вертикаль 15px */
-    row-gap: 30px;
-    /* увеличиваем расстояние между рядами */
-    width: 100% !important;
-    column-count: 1 !important;
-}
-
-.video-item {
-    position: relative;
-    cursor: pointer;
-    border-radius: 12px;
-    overflow: hidden;
-    aspect-ratio: 16/9;
-    background: #000;
-    break-inside: avoid;
-    margin-bottom: 0;
-}
-
-.video-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.video-preview {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.play-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(101, 101, 101);
-    font-size: 15px;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.video-item:hover .play-overlay {
-    opacity: 0;
-}
-
-/* Video Modal Styles */
+/* ===== VIDEO MODAL STYLES ===== */
 .video-modal-overlay {
     position: fixed;
     top: 0;
@@ -243,7 +333,7 @@
     display: block;
 }
 
-/* Animations */
+/* ===== ANIMATIONS ===== */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -256,11 +346,7 @@
     }
 }
 
-.portfolio-item {
-    animation: fadeIn 0.6s ease-out;
-}
-
-/* Mobile version */
+/* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 1200px) {
     .video-grid {
         grid-template-columns: repeat(4, 1fr) !important;
@@ -276,11 +362,20 @@
         column-count: 2;
         width: 90%;
     }
+
+    .gif-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
 }
 
 @media (max-width: 768px) {
     .video-grid {
         grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .gif-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        gap: 15px !important;
     }
 
     .portfolio-tabs-nav {
@@ -311,7 +406,9 @@
 }
 
 @media (max-width: 480px) {
-    .video-grid {
+
+    .video-grid,
+    .gif-grid {
         grid-template-columns: 1fr !important;
     }
 
@@ -320,9 +417,15 @@
         font-size: 0.9em;
     }
 
-    .play-overlay {
+    .play-overlay,
+    .play-btn,
+    .pause-btn {
         width: 50px;
         height: 50px;
         font-size: 18px;
+    }
+
+    .gif-item {
+        aspect-ratio: 16/9;
     }
 }
