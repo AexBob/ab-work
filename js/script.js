@@ -133,21 +133,20 @@ function renderEducation(educationItems) {
     const container = document.getElementById('education-list');
     if (!container) return;
 
-    container.innerHTML = educationItems.map(edu => `
+    container.innerHTML = educationItems.map((edu, index) => `
         <div class="education-item">
             <h4>${edu.degree}</h4>
             <p class="education-meta">${edu.institution} • ${edu.period}</p>
             ${edu.additionalInfo ? `
                 <div class="education-additional">
-                    <button class="education-toggle">
+                    <button class="education-toggle ${index === 0 ? 'attention-highlight' : ''}">
                         <i class="fas fa-chevron-down"></i>
                         Papildus informācija
                     </button>
                     <div class="education-additional-content">
                         <ul class="education-additional-list">
-                            ${edu.additionalInfo.map((item, index) => {
-        // Определяем подпункты грантов (3-й и 4-й элементы для магистра)
-        const isGrantSubitem = index === 2 || index === 3;
+                            ${edu.additionalInfo.map((item, itemIndex) => {
+        const isGrantSubitem = itemIndex === 2 || itemIndex === 3;
         if (isGrantSubitem) {
             return `<li class="education-additional-item subitem">${item}</li>`;
         } else {
@@ -161,8 +160,13 @@ function renderEducation(educationItems) {
         </div>
     `).join('');
 
-    // Добавляем обработчики для кнопок
+    // Настраиваем переключатели
     setupEducationToggles();
+
+    // Если это активная вкладка - запускаем анимацию
+    if (document.getElementById('education-tab')?.classList.contains('active')) {
+        setupEducationAttention();
+    }
 }
 
 // Обработчики для раскрытия дополнительной информации
@@ -191,6 +195,46 @@ function setupEducationToggles() {
     });
 }
 
+let educationAnimationShown = false;
+
+function setupEducationAttention() {
+    // Проверяем, показывалась ли уже анимация в этой сессии
+    if (educationAnimationShown) {
+        return;
+    }
+
+    // Ждем секунду после захода на вкладку образования
+    setTimeout(() => {
+        const firstEducationToggle = document.querySelector('#education-tab .education-toggle');
+
+        if (firstEducationToggle) {
+            // Анимируем увеличение и возврат
+            firstEducationToggle.style.transition = 'all 0.1s ease';
+
+            // Первое увеличение
+            setTimeout(() => {
+                firstEducationToggle.style.transform = 'scale(1.05)';
+            }, 100);
+
+            // Возврат к нормальному размеру
+            setTimeout(() => {
+                firstEducationToggle.style.transform = 'scale(1.0)';
+            }, 300);
+
+            // Второе увеличение
+            setTimeout(() => {
+                firstEducationToggle.style.transform = 'scale(1.05)';
+            }, 500);
+
+            // Финальный возврат
+            setTimeout(() => {
+                firstEducationToggle.style.transform = 'scale(1.0)';
+                // Помечаем что анимация была показана
+                educationAnimationShown = true;
+            }, 700);
+        }
+    }, 1500);
+}
 function renderLanguages(languagesItems) {
     const container = document.getElementById('languages-list');
     if (!container) return;
@@ -409,6 +453,11 @@ function setupAboutTabs() {
 
             if (targetPane) {
                 targetPane.classList.add('active');
+
+                // Если это вкладка образования - запускаем анимацию
+                if (tabId === 'education') {
+                    setupEducationAttention();
+                }
             }
         });
     });
