@@ -130,7 +130,7 @@
       ]
     },
     "interests": {
-      "title": "Hobiji un intereses",
+      "title": "Hobiji un interesi",
       "categories": [
         {
           "name": "Sports",
@@ -281,6 +281,42 @@
         "text": "Fleksogrāfijai",
         "icon": "fas fa-paint-roller"
       }
+    },
+    "flexography": {
+      "title": "Fleksogrāfijas projekti",
+      "header": "SIA Impress — fleksogrāfija (8 krāsas, analogās formas)",
+      "projects": [
+        {
+          "type": "left",
+          "texts": [
+            "Drukas paraugi līdz un pēc apstrādes ar mašīnas profilu.",
+            "Rezultāts pārliecināja pasūtītāju atteikties no iepriekšējās tipogrāfijas ar digitālajām formām."
+          ],
+          "images": [
+            {
+              "src": "assets/portfolio/flexography/MajonezeBad.jpg",
+              "alt": "Pirms apstrādes"
+            },
+            {
+              "src": "assets/portfolio/flexography/MojonezeGood.jpg",
+              "alt": "Pēc apstrādes"
+            }
+          ]
+        },
+        {
+          "type": "right",
+          "texts": [
+            "Attēlā redzams gatavs makets.",
+            "Pasūtītājs pārgāja uz fleksogrāfiju no rotācijas dobspieduma (rotogravure)."
+          ],
+          "images": [
+            {
+              "src": "assets/portfolio/flexography/calis_Cool.jpg",
+              "alt": "Gatavs makets"
+            }
+          ]
+        }
+      ]
     },
     "flashProjects": [
       {

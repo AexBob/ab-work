@@ -25,6 +25,11 @@ const PORTFOLIO_CONFIG = {
             id: 'flexography',
             nameKey: 'portfolio.tabs.flexography.text',
             path: 'assets/portfolio/flexography/'
+        },
+        {
+            id: '3d',
+            nameKey: 'portfolio.tabs.3d.text',
+            path: 'assets/portfolio/3d/'
         }
     ],
     currentCategory: 'static'
@@ -113,7 +118,8 @@ function getCategoryIcon(categoryId) {
         'video': 'fas fa-video',
         'gif': 'fas fa-film',
         'flash': 'fas fa-archive',
-        'flexography': 'fas fa-paint-roller'
+        'flexography': 'fas fa-paint-roller',
+        '3d': 'fas fa-cube'  // ← НОВАЯ ИКОНКА
     };
     return icons[categoryId] || 'fas fa-star';
 }
@@ -124,7 +130,8 @@ function getDisplayText(categoryId) {
         'video': 'Video materiāli',
         'gif': 'GIF animācija',
         'flash': 'Flash animācija',
-        'flexography': 'Fleksogrāfijai'
+        'flexography': 'Fleksogrāfijai',
+        '3d': '3D modeļi'  // ← НОВЫЙ ТЕКСТ
     };
     return texts[categoryId] || categoryId;
 }
@@ -145,6 +152,10 @@ function loadPortfolioContent(categoryId) {
         loadGifPortfolio();
     } else if (categoryId === 'flash') {
         loadFlashPortfolio();
+    } else if (categoryId === 'flexography') {
+        loadFlexographyPortfolio();
+    } else if (categoryId === '3d') {
+        load3DPortfolio();  // ← НОВАЯ ВКЛАДКА
     } else {
         showComingSoon();
     }
@@ -675,3 +686,112 @@ function updatePortfolioTranslations(newTranslations) {
     portfolioTranslations = newTranslations;
     updateMenuFromTranslations();
 }
+
+function loadFlexographyPortfolio() {
+    const container = document.getElementById('projects-list');
+    if (!container) return;
+
+    container.className = '';
+    container.style.cssText = '';
+
+    const flexographyData = portfolioTranslations?.portfolio?.flexography;
+
+    if (!flexographyData || !flexographyData.projects) {
+        showComingSoon();
+        return;
+    }
+
+    const leftProject = flexographyData.projects.find(p => p.type === 'left');
+    const rightProject = flexographyData.projects.find(p => p.type === 'right');
+
+    container.innerHTML = `
+        <div class="flexography-wrapper">
+            <div class="flexography-canvas">
+                <!-- ОБЩИЙ ЗАГОЛОВОК -->
+                <div class="flexography-header">
+                    <h3>${flexographyData.header}</h3>
+                </div>
+                
+                <div class="flexography-works">
+                    <!-- Левая работа -->
+                    <div class="flexography-work-left">
+                        ${leftProject ? `
+                            <div class="work-text">
+                                ${leftProject.texts.map(text => `<p>${text}</p>`).join('')}
+                            </div>
+                            <div class="work-images-horizontal">
+                                ${leftProject.images.map(image => `
+                                    <div class="horizontal-image-item">
+                                        <img src="${image.src}" alt="${image.alt}" loading="lazy">
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <!-- Правая работа -->
+                    <div class="flexography-work-right">
+                        ${rightProject ? `
+                            <div class="work-text">
+                                ${rightProject.texts.map(text => `<p>${text}</p>`).join('')}
+                            </div>
+                            <div class="work-image-horizontal">
+                                ${rightProject.images.map(image => `
+                                    <img src="${image.src}" alt="${image.alt}" loading="lazy">
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+// Добавить новую функцию в portfolio.js
+function load3DPortfolio() {
+    const container = document.getElementById('projects-list');
+    if (!container) return;
+
+    container.innerHTML = `
+        <div class="portfolio-item" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+            <h3 style="text-align: center; margin-bottom: 30px; color: #2c3e50;">3D modeļi</h3>
+            <div class="sketchfab-embed-wrapper" style="width: 100%; height: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <iframe 
+                    title="Klientu termināls" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                    xr-spatial-tracking 
+                    execution-while-out-of-viewport 
+                    execution-while-not-rendered 
+                    web-share 
+                    src="https://sketchfab.com/models/3eed04834abb4f7b933c17d78e00f248/embed"
+                    style="width: 100%; height: 100%; border: none;">
+                </iframe>
+            </div>
+            <p style="font-size: 13px; font-weight: normal; margin: 10px 0; color: #4A4A4A; text-align: center;">
+                <a href="https://sketchfab.com/3d-models/clientterm14c4d-3eed04834abb4f7b933c17d78e00f248?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                   target="_blank" 
+                   rel="nofollow" 
+                   style="font-weight: bold; color: #1CAAD9;">
+                    Klientu termināls
+                </a> by 
+                <a href="https://sketchfab.com/alexbob?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                   target="_blank" 
+                   rel="nofollow" 
+                   style="font-weight: bold; color: #1CAAD9;">
+                    alexbob
+                </a> on 
+                <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                   target="_blank" 
+                   rel="nofollow" 
+                   style="font-weight: bold; color: #1CAAD9;">
+                    Sketchfab
+                </a>
+            </p>
+        </div>
+    `;
+}
+

@@ -87,6 +87,7 @@ function updateContent(data) {
     // Portfolio section (with check)
     if (data.portfolio) {
         updateElementsByDataAttr('portfolio.title', data.portfolio.title);
+        // Данные для флексографии автоматически подхватятся через portfolioTranslations
     }
 
     // Contacts (with check)

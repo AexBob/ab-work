@@ -431,7 +431,6 @@
 .flash-grid {
     display: flex;
     flex-direction: column;
-    gap: 40px;
     width: 82%;
     margin: 0 auto;
     overflow: hidden;
@@ -551,7 +550,7 @@
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -679,5 +678,156 @@ flash-banner-item {
 
     .flash-banners-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ===== FLEXOGRAPHY STYLES ===== */
+.flexography-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.flexography-canvas {
+    background: #fff;
+    border-radius: 15px;
+            padding: 25px 20px 40px 40px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f4f4f4;
+    min-height: 400px;
+    width: 100%;
+}
+
+/* Общий заголовок */
+.flexography-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f4f4f4;
+}
+
+.flexography-header h3 {
+    color: #2c3e50;
+    font-size: 1.3em;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Контейнер для двух работ */
+.flexography-works {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* Левая работа */
+.flexography-work-left {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Правая работа */
+.flexography-work-right {
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Текст работы */
+.work-text {
+    text-align: left; /* Меняем center на left */
+}
+
+.work-text p {
+    color: #555;
+    /* line-height: 1.6; */
+    font-size: 1.1em;
+}
+
+.work-text p:first-child {
+    font-size: 1.1em;
+    color: #2c3e50;
+}
+
+.work-text strong {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* Фиксированная высота текстовых блоков */
+.flexography-work-left .work-text {
+    min-height: 115px;
+}
+
+.flexography-work-right .work-text {
+    min-height: 115px;
+}
+
+/* Горизонтальные картинки слева */
+.work-images-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Картинки слева */
+.horizontal-image-item img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Картинка справа */
+.work-image-horizontal img {
+    width: 500px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .flexography-wrapper {
+        width: 100%;
+    }
+
+    .flexography-canvas {
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .flexography-works {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .work-image-horizontal img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+ .work-text p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.work-text p:first-child {
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+    /* На мобильных убираем фиксированную высоту текста */
+    .flexography-work-left .work-text,
+    .flexography-work-right .work-text {
+        min-height: auto;
     }
 }
