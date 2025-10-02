@@ -67,9 +67,6 @@
     gap: 10px;
 }
 
-.portfolio-item-small {
-    /* наследует базовые стили от .portfolio-item */
-}
 
 /* ===== IMAGE STYLES ===== */
 .portfolio-image,
@@ -427,5 +424,260 @@
 
     .gif-item {
         aspect-ratio: 16/9;
+    }
+}
+
+/* ===== FLASH GRID STYLES ===== */
+.flash-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 82%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Главный проект */
+.flash-featured-project {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f4f4f4;
+}
+
+.flash-project-content {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    gap: 60px;
+    align-items: start;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.flash-image-container {
+    width: 500px;
+    height: 200px;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid #e0e0e0;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.flash-image-container:hover {
+    height: 425px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.flash-featured-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Показывает верхнюю часть в компактном виде */
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+
+.flash-text-container {
+    padding: 0;
+    align-self: top;
+}
+
+.flash-project-title {
+    font-size: 1.5em;
+    color: #2c3e50;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.flash-project-description {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.flash-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.flash-features-list li {
+    padding: 8px 0;
+    color: #555;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 25px;
+}
+
+.flash-features-list li::before {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+}
+
+/* Секция баннеров */
+.flash-banners-section {
+    margin-top: 20px;
+}
+
+.flash-banners-title {
+    font-size: 1.3em;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.flash-banners-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.flash-banners-section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+flash-banner-item {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    overflow: visible;
+    max-width: 960px;
+    width: auto;
+    /* Меняем на auto */
+    margin: 0 auto;
+    /* Центрируем каждый баннер */
+}
+
+.flash-banner-content {
+    position: relative;
+    display: inline-block;
+}
+
+.flash-banner-preview {
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    opacity: 1;
+    position: relative;
+    /* Возвращаем */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flash-banner-video {
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(101, 101, 101);
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+    z-index: 10;
+}
+
+
+
+
+.flash-banner-item:hover .play-overlay {
+    opacity: 0;
+}
+
+.flash-banner-item:hover .flash-banner-preview {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.flash-banners-title {
+    font-size: 1.3em;
+    color: #2c3e50;
+    margin-bottom: 0px;
+    /* Было 25px - уменьшаем */
+    text-align: center;
+    font-weight: 600;
+}
+
+.flash-banner-note {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .flash-project-content {
+        grid-template-columns: 500px 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .flash-project-content {
+        grid-template-columns: 400px 1fr;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .flash-grid {
+        width: 100% !important;
+    }
+
+
+    .flash-project-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+
+
+    .flash-banners-grid {
+        grid-template-columns: 1fr;
     }
 }

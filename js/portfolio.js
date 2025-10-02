@@ -19,7 +19,7 @@ const PORTFOLIO_CONFIG = {
         {
             id: 'flash',
             nameKey: 'portfolio.tabs.flash.text',
-            path: 'assets/portfolio/flash-archive/'
+            path: 'assets/portfolio/flash/'
         },
         {
             id: 'flexography',
@@ -143,6 +143,8 @@ function loadPortfolioContent(categoryId) {
     } else if (categoryId === 'gif') {
         container.classList.add('gif-grid');
         loadGifPortfolio();
+    } else if (categoryId === 'flash') {
+        loadFlashPortfolio();
     } else {
         showComingSoon();
     }
@@ -467,6 +469,129 @@ function setupGifControls() {
 
         item.addEventListener('mouseleave', function () {
             this.querySelector('.gif-controls').style.opacity = '0.8';
+        });
+    });
+}
+
+// ===== FLASH PORTFOLIO FUNCTIONS =====
+function loadFlashPortfolio() {
+    const container = document.getElementById('projects-list');
+    if (!container) return;
+
+    container.classList.add('flash-grid');
+
+    // Главный проект LDZ
+    const featuredProject = {
+        title: "Flash-projekts Latvijas Dzelzceļam",
+        description: "Stacijas dežurantu apmācība rīcībai ārkārtas situācijās",
+        features: [
+            "Dispečera pults interaktīvā interfeisa izstrāde",
+            "Diktora audio pavadījuma sinhronizācija ar vizuālajiem elementiem"
+        ],
+        image: "assets/portfolio/flash/ldz_portfolio_600x510.jpg"
+    };
+
+    container.innerHTML = `
+        <!-- Главный проект -->
+        <div class="flash-featured-project">
+            <div class="flash-project-content">
+                <div class="flash-image-container">
+                    <img src="${featuredProject.image}" 
+                         alt="LDZ projekts" 
+                         class="flash-featured-image"
+                         loading="lazy">
+                </div>
+                <div class="flash-text-container">
+                    <h3 class="flash-project-title">${featuredProject.title}</h3>
+                    <p class="flash-project-description">${featuredProject.description}</p>
+                    <ul class="flash-features-list">
+                        ${featuredProject.features.map(feature => `
+                            <li>${feature}</li>
+                        `).join('')}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+ <!-- Flash баннеры -->
+<div class="flash-banners-section">
+      <h4 class="flash-banners-title">Flash-banneri internetam</h4>
+    <p class="flash-banner-note">Flash tehnoloģija vairs netiek atbalstīta - demonstrēts video formātā</p>
+    <div class="flash-banners-grid">
+        <div class="flash-banner-item">
+            <div class="flash-banner-content">
+                <div class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </div>
+                <img src="assets/portfolio/flash/Seminar_Fontys.jpg" 
+                     alt="Seminar Fontys" 
+                     class="flash-banner-preview"
+                     loading="lazy">
+                <video class="flash-banner-video" loop muted preload="none">
+                    <source src="assets/portfolio/flash/Seminar_Fontys.webm" type="video/webm">
+                </video>
+            </div>
+        </div>
+        
+        <div class="flash-banner-item">
+            <div class="flash-banner-content">
+                <div class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </div>
+                <img src="assets/portfolio/flash/Seminar_Salzburg.jpg" 
+                     alt="Seminar Salzburg" 
+                     class="flash-banner-preview"
+                     loading="lazy">
+                <video class="flash-banner-video" loop muted preload="none">
+                    <source src="assets/portfolio/flash/Seminar_Salzburg.webm" type="video/webm">
+                </video>
+            </div>
+        </div>
+        
+        <div class="flash-banner-item">
+            <div class="flash-banner-content">
+                <div class="play-overlay">
+                    <i class="fas fa-play"></i>
+                </div>
+                <img src="assets/portfolio/flash/Baneris_Maclaren.jpg" 
+                     alt="Baneris Maclaren" 
+                     class="flash-banner-preview"
+                     loading="lazy">
+                <video class="flash-banner-video" loop muted preload="none">
+                    <source src="assets/portfolio/flash/Baneris_Maclaren.webm" type="video/webm">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+    `;
+
+    setupFlashBanners();
+}
+
+function setupFlashBanners() {
+    const bannerContents = document.querySelectorAll('.flash-banner-content');
+
+    bannerContents.forEach(content => {
+        const preview = content.querySelector('.flash-banner-preview');
+        const video = content.querySelector('.flash-banner-video');
+        let hasPlayed = false;
+
+        content.addEventListener('mouseenter', function () {
+            if (!hasPlayed) {
+                video.style.opacity = '1';
+                preview.style.opacity = '0';
+                video.play().catch(e => console.log('Play prevented:', e));
+                hasPlayed = true;
+            } else {
+                video.style.opacity = '1';
+                video.play();
+            }
+        });
+
+        content.addEventListener('mouseleave', function () {
+            video.pause();
+            // Превью не показываем!
         });
     });
 }

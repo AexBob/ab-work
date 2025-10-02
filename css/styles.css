@@ -54,10 +54,7 @@ body {
 }
 
 /* ===== ОСНОВНОЕ СОДЕРЖИМОЕ ===== */
-.content {
-    margin-left: 80px;
-    min-height: 100vh;
-}
+
 
 .section {
     display: none;
@@ -100,13 +97,22 @@ body {
 /* Общий фон для всех страниц КРОМЕ главной */
 .content {
     margin-left: 80px;
-    min-height: 100vh;
-    background: url('/assets/images/background_pages.jpg') center/cover;
-    background-color: rgba(255, 255, 255, 0.6);
-
-    background-blend-mode: overlay;
+    /* Убираем min-height: 100vh */
+    position: relative;
 }
 
+.content::before {
+    content: "";
+    position: fixed; /* ← ВАЖНО! Фиксируем фон */
+    top: 0;
+    left: 80px;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/images/background_pages.jpg') center/cover;
+    background-color: rgba(255, 255, 255, 0.6);
+    background-blend-mode: overlay;
+    z-index: -1; /* Фон позади контента */
+}
 
 /* ===== ГЛАВНАЯ СТРАНИЦА ===== */
 #home {

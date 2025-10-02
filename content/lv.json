@@ -281,7 +281,25 @@
         "text": "Fleksogrāfijai",
         "icon": "fas fa-paint-roller"
       }
-    }
+    },
+    "flashProjects": [
+      {
+        "type": "featured",
+        "title": "Flash-projekts Latvijas Dzelzceļam",
+        "description": "Stacijas dežurantu apmācība rīcībai ārkārtas situācijās",
+        "features": [
+          "Dispečera pults interaktīvā interfeisa izstrāde",
+          "Diktora audio pavadījuma sinhronizācija ar vizuālajiem elementiem"
+        ],
+        "image": {
+          "src": "assets/portfolio/flash/ldz_portfolio_600x510.jpg",
+          "width": 600,
+          "height": 510,
+          "alt": "LDZ dispečera apmācības sistēma"
+        },
+        "note": "Projekts satur konfidenciālu informāciju - demonstrēts anonimizētā veidā"
+      }
+    ]
   },
   "contact": {
     "title": "Sazināties",
