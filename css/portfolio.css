@@ -6,9 +6,7 @@
 
 /* ===== COMMON GRID STYLES ===== */
 .portfolio-grid {
-    column-count: 3;
-    column-gap: 20px;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -16,7 +14,6 @@
 .gif-grid {
     display: grid !important;
     width: 100% !important;
-    column-count: 1 !important;
     margin: 0 auto !important;
     gap: 15px;
 }
@@ -34,8 +31,6 @@
 }
 
 /* ===== COMMON ITEM STYLES ===== */
-.portfolio-item,
-.portfolio-item-small,
 .video-item,
 .gif-item {
     background: #fff;
@@ -46,33 +41,14 @@
     position: relative;
 }
 
-.portfolio-item:hover,
-.portfolio-item-small:hover,
 .gif-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.portfolio-item {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    animation: fadeIn 0.6s ease-out;
-}
-
-.portfolio-item-double {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-
 /* ===== IMAGE STYLES ===== */
-.portfolio-image,
 .video-poster,
 .video-preview,
-.gif-image,
 .gif-preview,
 .gif-animation {
     width: 100%;
@@ -80,14 +56,6 @@
     object-fit: cover;
     display: block;
     transition: opacity 0.3s ease;
-}
-
-.portfolio-image {
-    height: auto;
-}
-
-.portfolio-item:hover .portfolio-image {
-    transform: scale(1.02);
 }
 
 .video-poster,
@@ -343,6 +311,45 @@
     }
 }
 
+/* ===== COLLAGE WITH MAGNIFIER STYLES ===== */
+.collage-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.collage-wrapper {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    cursor: crosshair;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.collage-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.magnifier-glass {
+    position: fixed;
+    border: 3px solid #3498db;
+    background: transparent;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    pointer-events: none;
+    z-index: 10000;
+    display: none;
+    width: 600px;
+    height: 600px;
+    border-radius: 8px;
+}
+
+
 /* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 1200px) {
     .video-grid {
@@ -356,7 +363,6 @@
     }
 
     .portfolio-grid {
-        column-count: 2;
         width: 90%;
     }
 
@@ -393,12 +399,18 @@
     }
 
     .portfolio-grid {
-        column-count: 1;
         width: 100%;
     }
 
-    .portfolio-item-double {
-        grid-template-columns: 1fr;
+    /* Адаптивность для коллажа */
+    .collage-wrapper {
+        cursor: crosshair;
+    }
+
+    .magnifier-glass {
+        width: 300px !important;
+        height: 300px !important;
+        border-width: 2px;
     }
 }
 
@@ -424,6 +436,27 @@
 
     .gif-item {
         aspect-ratio: 16/9;
+    }
+
+    /* Мобильная адаптация коллажа */
+    .collage-container {
+        padding: 10px 0;
+    }
+
+    .collage-wrapper {
+        border-radius: 8px;
+    }
+
+    .magnifier-glass {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .loading-indicator {
+        bottom: 10px;
+        right: 10px;
+        font-size: 11px;
+        padding: 6px 10px;
     }
 }
 
@@ -690,7 +723,7 @@ flash-banner-item {
 .flexography-canvas {
     background: #fff;
     border-radius: 15px;
-            padding: 25px 20px 40px 40px;
+    padding: 25px 20px 40px 40px;
 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #f4f4f4;
@@ -736,11 +769,13 @@ flash-banner-item {
     flex-direction: column;
     align-items: center;
     text-align: center;
+
 }
 
 /* Текст работы */
 .work-text {
-    text-align: left; /* Меняем center на left */
+    text-align: left;
+    /* Меняем center на left */
 }
 
 .work-text p {
@@ -786,7 +821,7 @@ flash-banner-item {
 
 /* Картинка справа */
 .work-image-horizontal img {
-    width: 500px;
+    width: 100%;
     height: auto;
     object-fit: contain;
 }
@@ -812,22 +847,208 @@ flash-banner-item {
         max-width: 300px;
     }
 
- .work-text p {
-    color: #555;
-    line-height: 1.6;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-}
+    .work-text p {
+        color: #555;
+        line-height: 1.6;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
 
-.work-text p:first-child {
-    font-size: 1.2em;
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
+    .work-text p:first-child {
+        font-size: 1.2em;
+        color: #2c3e50;
+        margin-bottom: 15px;
+    }
 
     /* На мобильных убираем фиксированную высоту текста */
     .flexography-work-left .work-text,
     .flexography-work-right .work-text {
         min-height: auto;
+    }
+}
+
+/* ===== 3D MODELING STYLES ===== */
+.modeling3d-wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.modeling3d-canvas {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px 60px 60px 60px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f4f4f4;
+    min-height: 400px;
+    width: 100%;
+}
+
+.modeling3d-model-section {
+    height: 100%;
+    display: flex;
+}
+
+/* Sketchfab embed styles */
+.sketchfab-embed-wrapper {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.sketchfab-iframe {
+    width: 100%;
+    height: 92%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Author info and link styles */
+.sketchfab-attribution {
+    font-size: 13px;
+    font-weight: normal;
+    margin: 10px 0;
+    color: #4A4A4A;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.sketchfab-attribution a {
+    font-weight: bold;
+    color: #1CAAD9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sketchfab-attribution a:hover {
+    color: #1684a8;
+    text-decoration: underline;
+}
+
+/* 3D Modeling content layout */
+.modeling3d-content {
+    display: grid;
+    grid-template-columns: 55% auto;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.modeling3d-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.modeling3d-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Description styles */
+.modeling3d-description {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.modeling3d-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.modeling3d-subtitle {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Image styles */
+.modeling3d-image-item {
+    text-align: center;
+}
+
+.modeling3d-image {
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modeling3d-image.real-photo {
+    width: 100%;
+    height: auto;
+}
+
+/* Render containers */
+.modeling3d-renders-grid {
+    display: grid;
+    grid-template-columns: 39.2% auto;
+    gap: 10px;
+    align-items: start;
+}
+
+.modeling3d-render-container {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+}
+
+.modeling3d-image.render-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .modeling3d-canvas {
+        padding: 25px;
+    }
+
+    .modeling3d-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .modeling3d-renders-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .modeling3d-description {
+        padding: 0 10px;
+    }
+
+    .modeling3d-title {
+        font-size: 1.5em;
+    }
+
+    .modeling3d-subtitle {
+        font-size: 1em;
+        padding: 0 10px;
+    }
+
+    .sketchfab-iframe {
+        height: 400px;
+    }
+
+    .modeling3d-render-container {
+        height: 180px;
     }
 }

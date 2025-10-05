@@ -233,11 +233,31 @@
         "duration": "1 gads un 5 mēneši"
       },
       {
-        "period": "2006 – 2007",
-        "position": "Vecākais fleksogrāfijas maketētājs",
-        "company": "Impress SIA",
-        "duration": "1 gads un 2 mēneši"
-      },
+  "period": "2006 – 2007",
+  "position": "Vecākais fleksogrāfijas maketētājs",
+  "company": "Impress SIA",
+  "duration": "1 gads un 2 mēneši",
+  "additionalInfo": [
+    {
+      "type": "text",
+      "content": "Pārgāju uz uzņēmumu pēc bijušā kolēģa uzaicinājuma, kas kļuva par manu profesionālo īpašību atzīšanu. Apguvu pilnīgi jaunu virzienu — maketu sagatavošanu iepakojuma fleksogrāfiskai drukāšanai."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Pusgada laikā sasniedzu pieredzējušu speciālistu līmeni un tiku paaugstināts līdz vecākajam maketētājam",
+        "Atradu risinājumus digitālo dizainu adaptēšanai analogajai fleksodrukai",
+        "Pārbaudīju un koordinēju citu maketētāju darbu",
+        "Sagatavoju krāsu paraugus pasūtītāju apstiprināšanai",
+        "Aizvietoju projektu vadītāju atvaļinājuma laikā — veiksmīgi tiku galā (1 konsultācija 2 nedēļās pret parastajiem 45+)"
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Īpaši novērtēju komandas pieeju: ikdienas projektu apspriedes, kopīgu risinājumu meklēšanu, iespēju ietekmēt tehnoloģisko procesu. Vadība plānoja nodot manā kontrolē plēvju drukāšanas un formu izgatavošanas nodaļas."
+    }
+  ]
+},
       {
         "period": "2001 – 2006",
         "position": "Pirmsdrukas meistars",
@@ -280,6 +300,10 @@
       "flexography": {
         "text": "Fleksogrāfijai",
         "icon": "fas fa-paint-roller"
+      },
+      "3d": {
+        "text": "3D modeļi",
+        "icon": "fas fa-cube"
       }
     },
     "flexography": {
@@ -335,7 +359,18 @@
         },
         "note": "Projekts satur konfidenciālu informāciju - demonstrēts anonimizētā veidā"
       }
-    ]
+    ],
+    "3d": {
+      "title": "3D modeļi",
+      "project": {
+        "title": "Izveidots pēc reāla klientu termināla (Cinema 4D)",
+        "description": "Modelis tika izmantots uzņēmumā vizuālajām prezentācijām.",
+        "realPhotoAlt": "Reālie klientu termināli",
+        "render1Alt": "Render 1",
+        "render2Alt": "Render 2",
+        "sketchfabTitle": "Klientu termināls"
+      }
+    }
   },
   "contact": {
     "title": "Sazināties",

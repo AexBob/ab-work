@@ -119,7 +119,7 @@ function getCategoryIcon(categoryId) {
         'gif': 'fas fa-film',
         'flash': 'fas fa-archive',
         'flexography': 'fas fa-paint-roller',
-        '3d': 'fas fa-cube'  // ← НОВАЯ ИКОНКА
+        '3d': 'fas fa-cube'
     };
     return icons[categoryId] || 'fas fa-star';
 }
@@ -131,7 +131,7 @@ function getDisplayText(categoryId) {
         'gif': 'GIF animācija',
         'flash': 'Flash animācija',
         'flexography': 'Fleksogrāfijai',
-        '3d': '3D modeļi'  // ← НОВЫЙ ТЕКСТ
+        '3d': '3D modeļi'
     };
     return texts[categoryId] || categoryId;
 }
@@ -155,42 +155,102 @@ function loadPortfolioContent(categoryId) {
     } else if (categoryId === 'flexography') {
         loadFlexographyPortfolio();
     } else if (categoryId === '3d') {
-        load3DPortfolio();  // ← НОВАЯ ВКЛАДКА
+        load3DPortfolio();
     } else {
         showComingSoon();
     }
 }
 
 function loadStaticPortfolio() {
-    const category = PORTFOLIO_CONFIG.categories.find(c => c.id === 'static');
-    const imagePath = category.path;
     const container = document.getElementById('projects-list');
-
     if (!container) return;
 
-    const firstSeven = Array.from({ length: 7 }, (_, i) =>
-        `ab-portfolio-${i + 1}.jpg`
-    );
-
-    container.innerHTML = firstSeven.map((filename, index) => `
-        <div class="portfolio-item">
-            <img src="${imagePath}${filename}" 
-                 alt="Design ${index + 1}" 
-                 class="portfolio-image" 
-                 loading="lazy">
-        </div>
-    `).join('') + `
-    <div class="portfolio-item-double">
-        <div class="portfolio-item-small">
-            <img src="${imagePath}ab-portfolio-8.jpg" alt="Design 8" class="portfolio-image">
-        </div>
-        <div class="portfolio-item-small">
-            <img src="${imagePath}ab-portfolio-9.jpg" alt="Design 9" class="portfolio-image">
+    container.innerHTML = `
+    <div class="collage-container">
+        <div class="collage-wrapper">
+            <img src="assets/portfolio/static/static_collage_small.jpg" 
+                 alt="Static Design Collage" 
+                 class="collage-image collage-preview"
+                 loading="eager">
+            <div class="magnifier-glass"></div>
         </div>
     </div>
-    <div class="portfolio-item">
-        <img src="${imagePath}ab-portfolio-10.jpg" alt="Design 10" class="portfolio-image">
-    </div>`;
+`;
+
+    setupCollageMagnifier();
+}
+
+function setupCollageMagnifier() {
+    const wrapper = document.querySelector('.collage-wrapper');
+    const preview = document.querySelector('.collage-preview');
+
+    const hdImage = new Image();
+    hdImage.src = 'assets/portfolio/static/static_collage_big.jpg';
+
+    hdImage.onload = function () {
+        console.log('HD image loaded! Constrained magnifier...');
+
+        let magnifier = document.querySelector('.magnifier-glass');
+        if (!magnifier) {
+            magnifier = document.createElement('div');
+            magnifier.className = 'magnifier-glass';
+            document.body.appendChild(magnifier);
+        }
+
+        wrapper.addEventListener('mousemove', function (e) {
+            const rect = wrapper.getBoundingClientRect();
+            
+            const xWrapper = e.clientX - rect.left;
+            const yWrapper = e.clientY - rect.top;
+
+            const glassWidth = 600;
+            const glassHeight = 600;
+
+            // ОГРАНИЧИВАЕМ позицию лупы чтобы она не выходила за изображение
+            const minX = rect.left;
+            const maxX = rect.right - glassWidth;
+            const minY = rect.top; 
+            const maxY = rect.bottom - glassHeight;
+
+            const glassX = Math.min(Math.max(e.clientX - (glassWidth / 2), minX), maxX);
+            const glassY = Math.min(Math.max(e.clientY - (glassHeight / 2), minY), maxY);
+
+            magnifier.style.display = 'block';
+            magnifier.style.width = glassWidth + 'px';
+            magnifier.style.height = glassHeight + 'px';
+            magnifier.style.left = glassX + 'px';
+            magnifier.style.top = glassY + 'px';
+
+            const scaleX = hdImage.naturalWidth / rect.width;
+            const scaleY = hdImage.naturalHeight / rect.height;
+            
+            const bgX = (xWrapper * scaleX) - (glassWidth / 2);
+            const bgY = (yWrapper * scaleY) - (glassHeight / 2);
+
+            // Ограничиваем фон
+            const maxBgX = hdImage.naturalWidth - glassWidth;
+            const maxBgY = hdImage.naturalHeight - glassHeight;
+            
+            const clampedBgX = Math.max(0, Math.min(bgX, maxBgX));
+            const clampedBgY = Math.max(0, Math.min(bgY, maxBgY));
+
+            magnifier.style.backgroundImage = `url(${hdImage.src})`;
+            magnifier.style.backgroundSize = `${hdImage.naturalWidth}px ${hdImage.naturalHeight}px`;
+            magnifier.style.backgroundPosition = `-${clampedBgX}px -${clampedBgY}px`;
+            magnifier.style.backgroundRepeat = 'no-repeat';
+        });
+
+        wrapper.addEventListener('mouseleave', function () {
+            const magnifier = document.querySelector('.magnifier-glass');
+            if (magnifier) {
+                magnifier.style.display = 'none';
+            }
+        });
+    };
+
+    hdImage.onerror = function () {
+        console.error('HD image failed to load!');
+    };
 }
 
 // ===== VIDEO PORTFOLIO FUNCTIONS =====
@@ -676,15 +736,100 @@ function switchCategory(categoryId) {
     loadPortfolioContent(categoryId);
 }
 
-// ===== INITIALIZE ON DOM LOAD =====
-document.addEventListener('DOMContentLoaded', function () {
-    initPortfolio();
-});
+// ===== 3D PORTFOLIO FUNCTIONS =====
+function load3DPortfolio() {
+    const container = document.getElementById('projects-list');
+    if (!container) return;
 
-// Функция для обновления переводов из основного скрипта
-function updatePortfolioTranslations(newTranslations) {
-    portfolioTranslations = newTranslations;
-    updateMenuFromTranslations();
+    // Получаем переводы из глобальной переменной
+    const translations = window.portfolioTranslations || window.translations;
+    const projectData = translations?.portfolio?.["3d"]?.project;
+
+    container.innerHTML = `
+        <div class="modeling3d-wrapper">
+            <div class="modeling3d-canvas">
+                <!-- Текст описания в две строки -->
+                <div class="modeling3d-description">
+                    <h3 class="modeling3d-title">${projectData?.title || 'Klientu termināla 3D modelis'}</h3>
+                    <p class="modeling3d-subtitle">${projectData?.description || 'Izveidots pēc reāla klientu termināla (Cinema 4D). Modelis tika izmantots uzņēmumā vizuālajām prezentācijām.'}</p>
+                </div>
+                
+                <!-- Основной контент -->
+                <div class="modeling3d-content">
+                    <!-- Левая колонка - API -->
+                    <div class="modeling3d-left">
+                        <div class="modeling3d-model-section">
+                            <div class="sketchfab-embed-wrapper">
+                                <iframe 
+                                    title="Klientu termināls" 
+                                    frameborder="0" 
+                                    allowfullscreen 
+                                    mozallowfullscreen="true" 
+                                    webkitallowfullscreen="true" 
+                                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                                    xr-spatial-tracking 
+                                    execution-while-out-of-viewport 
+                                    execution-while-not-rendered 
+                                    web-share 
+                                    src="https://sketchfab.com/models/3eed04834abb4f7b933c17d78e00f248/embed?dnt=1&autostart=1&camera=1&autospin=0.3"
+                                    class="sketchfab-iframe">
+                                </iframe>
+                                          <p style="font-size: 13px; font-weight: normal; margin: 10px 0; color: #4A4A4A; text-align: center;">
+                <a href="https://sketchfab.com/3d-models/clientterm14c4d-3eed04834abb4f7b933c17d78e00f248?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                   target="_blank" 
+                   rel="nofollow" 
+                   style="font-weight: bold; color: #1CAAD9;">
+                    Klientu termināls
+                </a> by 
+                <a href="https://sketchfab.com/alexbob?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                   target="_blank" 
+                   rel="nofollow" 
+                   style="font-weight: bold; color: #1CAAD9;">
+                    alexbob
+                </a> on 
+                <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                   target="_blank" 
+                   rel="nofollow" 
+                   style="font-weight: bold; color: #1CAAD9;">
+                    Sketchfab
+                </a>
+            </p>
+                            </div>
+                  
+
+                        </div>
+                    </div>
+                    
+                    <!-- Правая колонка - галерея -->
+                    <div class="modeling3d-right">
+                        <!-- Реальная фотография -->
+                        <div class="modeling3d-image-item">
+                            <img src="assets/portfolio/3d/real_photo.jpg" 
+                                 alt="${projectData?.realPhotoAlt || 'Reālie klientu termināli'}" 
+                                 class="modeling3d-image real-photo"
+                                 loading="lazy">
+                        </div>
+                        
+                       <!-- Рендеры -->
+<div class="modeling3d-renders-grid">
+    <div class="modeling3d-render-container">
+        <img src="assets/portfolio/3d/render1.jpg" 
+             alt="${projectData?.render1Alt || 'Render 1'}" 
+             class="modeling3d-image render-image"
+             loading="lazy">
+    </div>
+    <div class="modeling3d-render-container">
+        <img src="assets/portfolio/3d/render2.jpg" 
+             alt="${projectData?.render2Alt || 'Render 2'}" 
+             class="modeling3d-image render-image"
+             loading="lazy">
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 function loadFlexographyPortfolio() {
@@ -747,51 +892,19 @@ function loadFlexographyPortfolio() {
         </div>
     `;
 }
-// Добавить новую функцию в portfolio.js
-function load3DPortfolio() {
-    const container = document.getElementById('projects-list');
-    if (!container) return;
 
-    container.innerHTML = `
-        <div class="portfolio-item" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
-            <h3 style="text-align: center; margin-bottom: 30px; color: #2c3e50;">3D modeļi</h3>
-            <div class="sketchfab-embed-wrapper" style="width: 100%; height: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                <iframe 
-                    title="Klientu termināls" 
-                    frameborder="0" 
-                    allowfullscreen 
-                    mozallowfullscreen="true" 
-                    webkitallowfullscreen="true" 
-                    allow="autoplay; fullscreen; xr-spatial-tracking" 
-                    xr-spatial-tracking 
-                    execution-while-out-of-viewport 
-                    execution-while-not-rendered 
-                    web-share 
-                    src="https://sketchfab.com/models/3eed04834abb4f7b933c17d78e00f248/embed"
-                    style="width: 100%; height: 100%; border: none;">
-                </iframe>
-            </div>
-            <p style="font-size: 13px; font-weight: normal; margin: 10px 0; color: #4A4A4A; text-align: center;">
-                <a href="https://sketchfab.com/3d-models/clientterm14c4d-3eed04834abb4f7b933c17d78e00f248?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
-                   target="_blank" 
-                   rel="nofollow" 
-                   style="font-weight: bold; color: #1CAAD9;">
-                    Klientu termināls
-                </a> by 
-                <a href="https://sketchfab.com/alexbob?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
-                   target="_blank" 
-                   rel="nofollow" 
-                   style="font-weight: bold; color: #1CAAD9;">
-                    alexbob
-                </a> on 
-                <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
-                   target="_blank" 
-                   rel="nofollow" 
-                   style="font-weight: bold; color: #1CAAD9;">
-                    Sketchfab
-                </a>
-            </p>
-        </div>
-    `;
+// ===== INITIALIZE ON DOM LOAD =====
+document.addEventListener('DOMContentLoaded', function () {
+    initPortfolio();
+});
+
+// Функция для обновления переводов из основного скрипта
+function updatePortfolioTranslations(newTranslations) {
+    portfolioTranslations = newTranslations;
+    updateMenuFromTranslations();
+
+    // Если активна вкладка 3D - перезагружаем контент
+    if (PORTFOLIO_CONFIG.currentCategory === '3d') {
+        load3DPortfolio();
+    }
 }
-

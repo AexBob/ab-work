@@ -55,7 +55,6 @@ body {
 
 /* ===== ОСНОВНОЕ СОДЕРЖИМОЕ ===== */
 
-
 .section {
     display: none;
     padding: 50px;
@@ -103,7 +102,8 @@ body {
 
 .content::before {
     content: "";
-    position: fixed; /* ← ВАЖНО! Фиксируем фон */
+    position: fixed;
+    /* ← ВАЖНО! Фиксируем фон */
     top: 0;
     left: 80px;
     right: 0;
@@ -111,7 +111,8 @@ body {
     background: url('/assets/images/background_pages.jpg') center/cover;
     background-color: rgba(255, 255, 255, 0.6);
     background-blend-mode: overlay;
-    z-index: -1; /* Фон позади контента */
+    z-index: -1;
+    /* Фон позади контента */
 }
 
 /* ===== ГЛАВНАЯ СТРАНИЦА ===== */
@@ -120,6 +121,11 @@ body {
         linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0.619)),
         url('/assets/images/background_home.jpg') center/cover;
     background-blend-mode: overlay;
+}
+
+#home.active {
+    display: flex;
+    align-items: center;
 }
 
 .alex {
@@ -811,244 +817,6 @@ body {
     color: white;
 }
 
-/* ===== РАЗДЕЛ "PORTFOLIO" ===== */
-#portfolio.section {
-    padding-top: 30px;
-}
-
-.portfolio-tabs-nav {
-    display: flex;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 24px 0 30px 0;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
-}
-
-.portfolio-tab-btn {
-    padding: 15px 20px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 0.95em;
-    color: #6c757d;
-    transition: all 0.3s;
-    border-bottom: 3px solid transparent;
-    white-space: nowrap;
-    flex: 1;
-    min-width: 120px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex-direction: column;
-}
-
-.portfolio-tab-btn i {
-    font-size: 1.2em;
-    transition: color 0.3s ease;
-}
-
-.portfolio-tab-btn:hover {
-    background: #e9ecef;
-    color: #495057;
-}
-
-.portfolio-tab-btn.active {
-    background: white;
-    color: #3498db;
-    border-bottom-color: #3498db;
-}
-
-.portfolio-tab-btn.active i {
-    color: #3498db;
-}
-
-.portfolio-grid {
-    column-count: 3;
-    column-gap: 20px;
-    width: 70%;
-    margin: 0 auto;
-}
-
-.portfolio-item {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.portfolio-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.portfolio-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover .portfolio-image {
-    transform: scale(1.02);
-}
-
-.portfolio-item-double {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.portfolio-item-small {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.portfolio-item-small:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.portfolio-item-small .portfolio-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* ===== VIDEO PORTFOLIO STYLES ===== */
-.video-grid {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 15px 15px;
-    row-gap: 30px;
-    width: 100% !important;
-    column-count: 1 !important;
-}
-
-.video-item {
-    position: relative;
-    cursor: pointer;
-    border-radius: 12px;
-    overflow: hidden;
-    aspect-ratio: 16/9;
-    background: #000;
-    break-inside: avoid;
-    margin-bottom: 0;
-}
-
-.video-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.video-preview {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.play-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(101, 101, 101);
-    font-size: 15px;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.video-item:hover .play-overlay {
-    opacity: 0;
-}
-
-/* Video Modal Styles */
-.video-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    animation: fadeIn 0.3s ease;
-}
-
-.video-modal-container {
-    position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
-    background: #000;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.video-modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease;
-}
-
-.video-modal-close:hover {
-    background: rgba(0, 0, 0, 0.9);
-}
-
-.video-modal-player {
-    width: 100%;
-    height: auto;
-    max-width: 1024px;
-    max-height: 576px;
-    display: block;
-}
-
 /* ===== РАЗДЕЛ "KONTAKTI" ===== */
 .contact-container {
     max-width: 1000px;
@@ -1323,36 +1091,6 @@ body {
 
     .skills-content-area {
         min-height: 300px;
-    }
-
-    .portfolio-tabs-nav {
-        flex-direction: column;
-    }
-
-    .portfolio-tab-btn {
-        flex-direction: row;
-        justify-content: flex-start;
-        text-align: left;
-        border-bottom: 1px solid #e9ecef;
-        border-left: 3px solid transparent;
-    }
-
-    .portfolio-tab-btn.active {
-        border-left-color: #3498db;
-        border-bottom-color: #e9ecef;
-    }
-
-    .portfolio-grid {
-        column-count: 1;
-        width: 100%;
-    }
-
-    .portfolio-item-double {
-        grid-template-columns: 1fr;
-    }
-
-    .video-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     .contact-cards {
