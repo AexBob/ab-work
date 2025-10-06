@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="grandparent" style="  background: #eee;">
+        <div class="parent" style="width: 200px; height: 200px; background: #ccc;">
+            <div class="child">Я размером с дедушку!</div>
+        </div>
+    </div>
+
+    <style>
+        .grandparent {
+            height: 300px;
+            width: 500px;
+            position: relative;
+            border: 2px solid blue;
+        }
+
+        .parent {
+            /* размеры уже в инлайне */
+            border: 2px solid green;
+            margin: 20px;
+        }
+
+        .child {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed red;
+        }
+    </style>
+
+</body>
+
+</html>

@@ -63,6 +63,7 @@ body {
 
 .section.active {
     display: block;
+    position: relative;
 }
 
 .section>* {

@@ -166,14 +166,15 @@ function loadStaticPortfolio() {
     if (!container) return;
 
     container.innerHTML = `
+    <div class="static-cursor-overlay"></div>
     <div class="collage-container">
-        <div class="collage-wrapper">
-            <img src="assets/portfolio/static/static_collage_small.jpg" 
-                 alt="Static Design Collage" 
-                 class="collage-image collage-preview"
-                 loading="eager">
-            <div class="magnifier-glass"></div>
-        </div>
+    <div class="collage-wrapper">
+    <img src="assets/portfolio/static/static_collage_small.jpg" 
+    alt="Static Design Collage" 
+    class="collage-image collage-preview"
+    loading="eager">
+    <div class="magnifier-glass"></div>
+    </div>
     </div>
 `;
 

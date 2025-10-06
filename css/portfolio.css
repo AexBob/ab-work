@@ -8,7 +8,11 @@
 .portfolio-grid {
     width: 100%;
     margin: 0 auto;
+    /* overflow: visible; */
 }
+
+
+
 
 .video-grid,
 .gif-grid {
@@ -25,9 +29,15 @@
 
 .gif-grid {
     grid-template-columns: repeat(4, 1fr) !important;
-    gap: 25px !important;
-    width: 70% !important;
+    gap: 30px !important;
+    width: 80% !important;
     align-items: end;
+    background: #fff;
+    border-radius: 15px;
+    padding: 50px 60px 50px 60px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f4f4f4;
+
 }
 
 /* ===== COMMON ITEM STYLES ===== */
@@ -193,6 +203,8 @@
 /* ===== TABS NAVIGATION ===== */
 .portfolio-tabs-nav {
     display: flex;
+    position: relative;
+    z-index: 10;
     background: #f8f9fa;
     border-bottom: 1px solid #e9ecef;
     flex-wrap: wrap;
@@ -318,6 +330,16 @@
     justify-content: center;
     align-items: center;
     padding: 20px 0;
+}
+
+.static-cursor-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    /* background-color: #3498db; */
+    cursor: url('../assets/images/zoom_pointer.png') 14 18, auto;
 }
 
 .collage-wrapper {
@@ -474,6 +496,7 @@
     background: #fff;
     border-radius: 15px;
     padding: 30px;
+      margin: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #f4f4f4;
 }
@@ -560,7 +583,7 @@
 
 /* Секция баннеров */
 .flash-banners-section {
-    margin-top: 20px;
+    margin: 20px;
 }
 
 .flash-banners-title {
@@ -587,18 +610,7 @@
     margin-bottom: 20px;
 }
 
-flash-banner-item {
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
-    overflow: visible;
-    max-width: 960px;
-    width: auto;
-    /* Меняем на auto */
-    margin: 0 auto;
-    /* Центрируем каждый баннер */
-}
+
 
 .flash-banner-content {
     position: relative;
