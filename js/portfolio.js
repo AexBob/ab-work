@@ -752,7 +752,7 @@ function load3DPortfolio() {
                 <!-- Текст описания в две строки -->
                 <div class="modeling3d-description">
                     <h3 class="modeling3d-title">${projectData?.title || 'Klientu termināla 3D modelis'}</h3>
-                    <p class="modeling3d-subtitle">${projectData?.description || 'Izveidots pēc reāla klientu termināla (Cinema 4D). Modelis tika izmantots uzņēmumā vizuālajām prezentācijām.'}</p>
+                    <p class="modeling3d-subtitle">${projectData?.description || 'Modelis tika izmantots uzņēmumā vizuālajām prezentācijām.'}</p>
                 </div>
                 
                 <!-- Основной контент -->
@@ -775,29 +775,27 @@ function load3DPortfolio() {
                                     src="https://sketchfab.com/models/3eed04834abb4f7b933c17d78e00f248/embed?dnt=1&autostart=1&camera=1&autospin=0.3"
                                     class="sketchfab-iframe">
                                 </iframe>
-                                          <p style="font-size: 13px; font-weight: normal; margin: 10px 0; color: #4A4A4A; text-align: center;">
-                <a href="https://sketchfab.com/3d-models/clientterm14c4d-3eed04834abb4f7b933c17d78e00f248?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
-                   target="_blank" 
-                   rel="nofollow" 
-                   style="font-weight: bold; color: #1CAAD9;">
-                    Klientu termināls
-                </a> by 
-                <a href="https://sketchfab.com/alexbob?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
-                   target="_blank" 
-                   rel="nofollow" 
-                   style="font-weight: bold; color: #1CAAD9;">
-                    alexbob
-                </a> on 
-                <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
-                   target="_blank" 
-                   rel="nofollow" 
-                   style="font-weight: bold; color: #1CAAD9;">
-                    Sketchfab
-                </a>
-            </p>
+                                <p style="font-size: 13px; font-weight: normal; margin: 10px 0; color: #4A4A4A; text-align: center;">
+                                    <a href="https://sketchfab.com/3d-models/clientterm14c4d-3eed04834abb4f7b933c17d78e00f248?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                                       target="_blank" 
+                                       rel="nofollow" 
+                                       style="font-weight: bold; color: #1CAAD9;">
+                                        Klientu termināls
+                                    </a> by 
+                                    <a href="https://sketchfab.com/alexbob?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                                       target="_blank" 
+                                       rel="nofollow" 
+                                       style="font-weight: bold; color: #1CAAD9;">
+                                        alexbob
+                                    </a> on 
+                                    <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
+                                       target="_blank" 
+                                       rel="nofollow" 
+                                       style="font-weight: bold; color: #1CAAD9;">
+                                        Sketchfab
+                                    </a>
+                                </p>
                             </div>
-                  
-
                         </div>
                     </div>
                     
@@ -811,21 +809,23 @@ function load3DPortfolio() {
                                  loading="lazy">
                         </div>
                         
-                       <!-- Рендеры -->
-<div class="modeling3d-renders-grid">
-    <div class="modeling3d-render-container">
-        <img src="assets/portfolio/3d/render1.jpg" 
-             alt="${projectData?.render1Alt || 'Render 1'}" 
-             class="modeling3d-image render-image"
-             loading="lazy">
-    </div>
-    <div class="modeling3d-render-container">
-        <img src="assets/portfolio/3d/render2.jpg" 
-             alt="${projectData?.render2Alt || 'Render 2'}" 
-             class="modeling3d-image render-image"
-             loading="lazy">
-    </div>
-</div>
+                        <!-- Рендеры с иконками кликабельности -->
+                        <div class="modeling3d-renders-grid">
+                            <div class="modeling3d-render-container">
+                                <img src="assets/portfolio/3d/render1.jpg" 
+                                     alt="${projectData?.render1Alt || 'Render 1'}" 
+                                     class="modeling3d-image render-image"
+                                     loading="lazy">
+                                <div class="render-hint">🔍</div>
+                            </div>
+                            <div class="modeling3d-render-container">
+                                <img src="assets/portfolio/3d/render2.jpg" 
+                                     alt="${projectData?.render2Alt || 'Render 2'}" 
+                                     class="modeling3d-image render-image"
+                                     loading="lazy">
+                                <div class="render-hint">🔍</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

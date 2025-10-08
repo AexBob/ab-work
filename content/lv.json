@@ -285,7 +285,23 @@
         "period": "1999 – 2001",
         "position": "Pirmsdrukas meistars",
         "company": "Izdevniecības Nams Fenster SIA",
-        "duration": "1 gads un 9 mēneši"
+        "duration": "1 gads un 9 mēneši",
+        "additionalInfo": [
+          {
+            "type": "text",
+            "content": "Karjeru sāku lielā izdevniecības namā “Fenster”. Strādāju pirmsdrukas sagatavošanas nodaļā (Reprocentrs)."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Filmu drukāšana paša izdevniecības vajadzībām un ārējiem pasūtītājiem",
+              "Specializēto iekārtu apkalpošana un kontrole",
+              "Profesionāla attēlu skenēšana un apstrāde (aktuāli analogās fotogrāfijas laikmetā)",
+              "Pasūtītāju konsultēšana failu sagatavošanas un krāsu dalīšanas jautājumos",
+              "Maketu izstrāde un failu adaptēšana drukai"
+            ]
+          }
+        ]
       },
       {
         "period": "1997 – 1999",
