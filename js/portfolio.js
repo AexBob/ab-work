@@ -742,14 +742,13 @@ function load3DPortfolio() {
     const container = document.getElementById('projects-list');
     if (!container) return;
 
-    // Получаем переводы из глобальной переменной
     const translations = window.portfolioTranslations || window.translations;
     const projectData = translations?.portfolio?.["3d"]?.project;
 
     container.innerHTML = `
         <div class="modeling3d-wrapper">
             <div class="modeling3d-canvas">
-                <!-- Текст описания в две строки -->
+                <!-- Текст описания -->
                 <div class="modeling3d-description">
                     <h3 class="modeling3d-title">${projectData?.title || 'Klientu termināla 3D modelis'}</h3>
                     <p class="modeling3d-subtitle">${projectData?.description || 'Modelis tika izmantots uzņēmumā vizuālajām prezentācijām.'}</p>
@@ -757,7 +756,7 @@ function load3DPortfolio() {
                 
                 <!-- Основной контент -->
                 <div class="modeling3d-content">
-                    <!-- Левая колонка - API -->
+                    <!-- Левая колонка - 3D модель -->
                     <div class="modeling3d-left">
                         <div class="modeling3d-model-section">
                             <div class="sketchfab-embed-wrapper">
@@ -811,19 +810,19 @@ function load3DPortfolio() {
                         
                         <!-- Рендеры с иконками кликабельности -->
                         <div class="modeling3d-renders-grid">
-                            <div class="modeling3d-render-container">
+                            <div class="modeling3d-render-container" data-image="render1.jpg">
                                 <img src="assets/portfolio/3d/render1.jpg" 
                                      alt="${projectData?.render1Alt || 'Render 1'}" 
                                      class="modeling3d-image render-image"
                                      loading="lazy">
-                                <div class="render-hint">🔍</div>
+                                <div class="render-hint"></div>
                             </div>
-                            <div class="modeling3d-render-container">
+                            <div class="modeling3d-render-container" data-image="render2.jpg">
                                 <img src="assets/portfolio/3d/render2.jpg" 
                                      alt="${projectData?.render2Alt || 'Render 2'}" 
                                      class="modeling3d-image render-image"
                                      loading="lazy">
-                                <div class="render-hint">🔍</div>
+                                <div class="render-hint"></div>
                             </div>
                         </div>
                     </div>
@@ -831,6 +830,9 @@ function load3DPortfolio() {
             </div>
         </div>
     `;
+
+    // Добавляем обработчики кликов
+    setupRenderClickHandlers();
 }
 
 function loadFlexographyPortfolio() {
@@ -908,4 +910,48 @@ function updatePortfolioTranslations(newTranslations) {
     if (PORTFOLIO_CONFIG.currentCategory === '3d') {
         load3DPortfolio();
     }
+}
+
+function setupRenderClickHandlers() {
+    const renderContainers = document.querySelectorAll('.modeling3d-render-container');
+    
+    renderContainers.forEach(container => {
+        container.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-image');
+            const imageAlt = this.querySelector('img').alt;
+            openImageModal(imageSrc, imageAlt);
+        });
+    });
+}
+
+function openImageModal(imageSrc, imageAlt) {
+    const modalHTML = `
+        <div class="image-modal-overlay">
+            <div class="image-modal-container">
+                <button class="image-modal-close">&times;</button>
+                <img src="assets/portfolio/3d/${imageSrc}" 
+                     alt="${imageAlt}" 
+                     class="image-modal-content">
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    const overlay = document.querySelector('.image-modal-overlay');
+    const closeBtn = document.querySelector('.image-modal-close');
+    const image = document.querySelector('.image-modal-content');
+
+    function closeModal() {
+        overlay.remove();
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
 }

@@ -231,6 +231,10 @@
             "content": "Nodibināju kompāniju Bob.lv, kas klientiem piedāvāja pilnu poligrāfijas pakalpojumu klāstu, strādājot bez savām iekārtām."
           },
           {
+            "type": "text",
+            "content": "Galvenie darbības aspekti:"
+          },
+          {
             "type": "list",
             "items": [
               "Visu procesu koordinēšana: no dizaina un komunikācijas ar klientiem līdz drukas kvalitātes kontrolei pie partneriem",
@@ -260,6 +264,10 @@
             "content": "Pārgāju uz uzņēmumu pēc bijušā kolēģa uzaicinājuma, kas kļuva par manu profesionālo īpašību atzīšanu. Apguvu pilnīgi jaunu virzienu — maketu sagatavošanu iepakojuma fleksogrāfiskai drukāšanai."
           },
           {
+            "type": "text",
+            "content": "Galvenie sasniegumi:"
+          },
+          {
             "type": "list",
             "items": [
               "Pusgada laikā sasniedzu pieredzējušu speciālistu līmeni un tiku paaugstināts līdz vecākajam maketētājam",
@@ -279,7 +287,28 @@
         "period": "2001 – 2006",
         "position": "Pirmsdrukas meistars",
         "company": "Litera VS SIA",
-        "duration": "5 gadi"
+        "duration": "5 gadi",
+        "additionalInfo": [
+          {
+            "type": "text",
+            "content": "Izdevniecības \"Fenster\" reorganizācija: pirmsdrukas sagatavošanas nodaļa tiek izdalīta atsevišķā kompānijā - \"Litera VS\". Mēs kļūstam vairāk orientēti uz ārējiem pasūtījumiem un darbu ar klientiem. Attīstoties digitālajai fotogrāfijai, profesionālā skenēšana zaudē aktualitāti. Iegādājoties Roland printeri, mēs iekļaujamies lielformāta drukas tirgū."
+          },
+          {
+            "type": "text",
+            "content": "Jauno uzdevumu skaitā:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Lielformāta materiālu druka (plakāti, baneri, uzlīmes)",
+              "Iekārtas apkalpošana un kontrole"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Šajā periodā sāku studijas bakalaura programmā \"Vadības zinātnes\", apvienojot darbu un mācības."
+          }
+        ]
       },
       {
         "period": "1999 – 2001",
@@ -290,6 +319,10 @@
           {
             "type": "text",
             "content": "Karjeru sāku lielā izdevniecības namā “Fenster”. Strādāju pirmsdrukas sagatavošanas nodaļā (Reprocentrs)."
+          },
+          {
+            "type": "text",
+            "content": "Galvenie pienākumi:"
           },
           {
             "type": "list",
