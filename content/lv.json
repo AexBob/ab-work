@@ -228,7 +228,7 @@
         "additionalInfo": [
           {
             "type": "text",
-            "content": "Nodibināju kompāniju Bob.lv, kas klientiem piedāvāja pilnu poligrāfijas pakalpojumu klāstu, strādājot bez savām iekārtām."
+            "content": "Pēc maģistra grāda iegūšanas nodibināju kompāniju Bob.lv, kas klientiem piedāvāja pilnu poligrāfijas pakalpojumu klāstu, strādājot bez savām iekārtām."
           },
           {
             "type": "text",
@@ -250,8 +250,38 @@
       {
         "period": "2008 – 2009",
         "position": "Pirmsdrukas meistars",
-        "company": "Poligrāfijas Grupa Fenster SIA",
-        "duration": "1 gads un 5 mēneši"
+        "company": "Poligrāfijas grupa Fenster SIA",
+        "duration": "1 gads un 5 mēneši",
+        "additionalInfo": [
+          {
+            "type": "text",
+            "content": "Saņēmu piedāvājumu atgriezties savā bijušajā kolektīvā – pirmsdrukas sagatavošanas nodaļā. Izdevniecība uzsāka savas avīžu tipogrāfijas darbību, kurā tika ieviesta moderna Computer-to-Plate (CTP) tehnoloģija tiešai iespiedformu izgatavošanai."
+          },
+          {
+            "type": "text",
+            "content": "Jaunie virzieni:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Lappušu montāža un formu drukāšana (Computer-to-Plate, CTP)",
+              "CTP iekārtu kontrole un apkalpošana"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Iepriekšējie uzdevumi:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Lielformāta druka (plakāti, baneri, uzlīmes)",
+              "Filmu drukāšana pasūtītājiem",
+              "Darbs ar klientiem",
+              "Iekārtu apkalpošana"
+            ]
+          }
+        ]
       },
       {
         "period": "2006 – 2007",
