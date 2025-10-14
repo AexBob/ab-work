@@ -165,7 +165,7 @@
       {
         "period": "2024 – 2025",
         "position": "Iespiedējs",
-        "company": "Pro-Baltic SIA",
+        "company": "Pro-Baltic",
         "duration": "1 gads un 4 mēneši",
         "additionalInfo": [
           {
@@ -189,7 +189,7 @@
       {
         "period": "2012 – 2023",
         "position": "Tehniskais speciālists",
-        "company": "Optibet SIA",
+        "company": "Optibet",
         "duration": "11 gadi un 2 mēneši",
         "additionalInfo": [
           {
@@ -223,7 +223,7 @@
       {
         "period": "2009 – 2022",
         "position": "Vadītājs",
-        "company": "Bob.lv SIA",
+        "company": "Bob.lv",
         "duration": "13 gadi un 3 mēneši",
         "additionalInfo": [
           {
@@ -250,7 +250,7 @@
       {
         "period": "2008 – 2009",
         "position": "Pirmsdrukas meistars",
-        "company": "Poligrāfijas grupa Fenster SIA",
+        "company": "Poligrāfijas grupa Fenster",
         "duration": "1 gads un 5 mēneši",
         "additionalInfo": [
           {
@@ -286,7 +286,7 @@
       {
         "period": "2006 – 2007",
         "position": "Vecākais fleksogrāfijas maketētājs",
-        "company": "Impress SIA",
+        "company": "Impress",
         "duration": "1 gads un 2 mēneši",
         "additionalInfo": [
           {
@@ -316,7 +316,7 @@
       {
         "period": "2001 – 2006",
         "position": "Pirmsdrukas meistars",
-        "company": "Litera VS SIA",
+        "company": "Litera VS",
         "duration": "5 gadi",
         "additionalInfo": [
           {
@@ -343,7 +343,7 @@
       {
         "period": "1999 – 2001",
         "position": "Pirmsdrukas meistars",
-        "company": "Izdevniecības Nams Fenster SIA",
+        "company": "Izdevniecības Nams Fenster",
         "duration": "1 gads un 9 mēneši",
         "additionalInfo": [
           {
@@ -369,8 +369,58 @@
       {
         "period": "1997 – 1999",
         "position": "Transporta dispečers",
-        "company": "Malttrans SIA",
-        "duration": "1 gads un 3 mēneši"
+        "company": "Malttrans",
+        "duration": "1 gads un 3 mēneši",
+        "additionalInfo": [
+          {
+            "type": "text",
+            "content": "Dispečera amats starptautiskajā autotransporta uzņēmumā – pirmais darbs, kurā noderēja manas datorprasmes un zināšanas."
+          },
+          {
+            "type": "text",
+            "content": "Galvenie pienākumi:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Autotransporta dokumentu (t.sk. TIR-Carnet) noformēšana starptautiskajiem pārvadājumiem",
+              "Sadarbība ar partneriem un piegādātājiem operatīvu jautājumu risināšanai",
+              "Vadītāja atsevišķu uzdevumu izpilde (vīzu noformēšana, dokumentu piegāde u.c.)",
+              "Dokumentu aprites kārtošana un paātrināšana"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Strādāju bez kļūdām daudzuzdevumu un augstas intensitātes apstākļos. Uzstādīju rekordu par ilgāko darba laiku amatā, kur darbinieki parasti ilgi nepalika."
+          }
+        ]
+      },
+      {
+        "period": "aug. – dec. 1997",
+        "position": "Autoatslēdznieka māceklis, autoelektriķis",
+        "company": "Autoserviss \"KAR\"",
+        "duration": "4 mēneši",
+        "additionalInfo": [
+          {
+            "type": "text",
+            "content": "Pēc Rīgas Tehniskās koledžas beigšanas iekārtojos autoservisā \"KAR\" par autoatslēdznieka mācekli un autoelektriķi."
+          },
+          {
+            "type": "text",
+            "content": "Galvenie pienākumi:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Automašīnu elektroiekārtu diagnostika un nelieli remontdarbi",
+              "Palīdzība meistariem atslēdznieku darbos"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Izprotu automašīnas uzbūvi un apguvu darbu ar instrumentiem. Koledžā iegūtās zināšanas noderēja elektroiekāṭu diagnostikā."
+          }
+        ]
       }
     ]
   },
