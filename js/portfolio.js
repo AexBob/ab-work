@@ -35,7 +35,7 @@ const PORTFOLIO_CONFIG = {
     currentCategory: 'static'
 };
 
-// Глобальная переменная для переводов
+// Global variable for translations
 let portfolioTranslations = null;
 
 // ===== INITIALIZATION =====
@@ -51,7 +51,7 @@ function initPortfolio() {
     }, 200);
 }
 
-// ===== ЛЕВОЕ МЕНЮ =====
+// ===== LEFT MENU =====
 function setupLeftMenuClickHandler() {
     const leftMenuLinks = document.querySelectorAll('.side-nav a');
 
@@ -59,7 +59,7 @@ function setupLeftMenuClickHandler() {
         link.addEventListener('click', function () {
             const targetSection = this.getAttribute('data-section');
 
-            // Если уходим С портфолио на другую секцию - сбрасываем GIF
+            // If leaving portfolio for another section - reset GIFs
             if (targetSection !== 'portfolio') {
                 if (PORTFOLIO_CONFIG.currentCategory === 'gif') {
                     resetAllGifs();
@@ -207,7 +207,7 @@ function setupCollageMagnifier() {
             const glassWidth = 600;
             const glassHeight = 600;
 
-            // ОГРАНИЧИВАЕМ позицию лупы чтобы она не выходила за изображение
+            // CONSTRAIN magnifier position so it doesn't go outside image
             const minX = rect.left;
             const maxX = rect.right - glassWidth;
             const minY = rect.top; 
@@ -228,7 +228,7 @@ function setupCollageMagnifier() {
             const bgX = (xWrapper * scaleX) - (glassWidth / 2);
             const bgY = (yWrapper * scaleY) - (glassHeight / 2);
 
-            // Ограничиваем фон
+            // Constrain background
             const maxBgX = hdImage.naturalWidth - glassWidth;
             const maxBgY = hdImage.naturalHeight - glassHeight;
             
@@ -432,7 +432,7 @@ function loadGifPortfolio() {
             title: 'Cemodans',
             filename: 'gif_cemodans.gif',
             preview: 'preview_gif_cemodans.jpg',
-            alt: 'Cemodans анимация',
+            alt: 'Cemodans animation',
             type: 'square'
         },
         {
@@ -440,7 +440,7 @@ function loadGifPortfolio() {
             title: 'Fillinks',
             filename: 'gif_fillinks.gif',
             preview: 'preview_gif_fillinks.jpg',
-            alt: 'Fillinks анимация',
+            alt: 'Fillinks animation',
             type: 'square'
         },
         {
@@ -448,7 +448,7 @@ function loadGifPortfolio() {
             title: 'Printer',
             filename: 'gif_printer.gif',
             preview: 'preview_gif_printer.jpg',
-            alt: 'Printer анимация',
+            alt: 'Printer animation',
             type: 'ultra-wide'
         },
         {
@@ -456,7 +456,7 @@ function loadGifPortfolio() {
             title: 'Brivdienas',
             filename: 'gif_brivdienas.gif',
             preview: 'preview_gif_brivdienas.jpg',
-            alt: 'Brivdienas анимация',
+            alt: 'Brivdienas animation',
             type: 'wide'
         },
         {
@@ -464,7 +464,7 @@ function loadGifPortfolio() {
             title: 'Music School',
             filename: 'gif_music-school.gif',
             preview: 'preview_gif_music-school.jpg',
-            alt: 'Music School анимация',
+            alt: 'Music School animation',
             type: 'wide'
         }
     ];
@@ -523,11 +523,11 @@ function setupGifControls() {
             const animation = gifItem.querySelector('.gif-animation');
             const controls = gifItem.querySelector('.gif-controls');
 
-            // Сначала перезагружаем GIF
+            // First reload GIF
             const originalSrc = animation.src.split('?')[0];
             animation.src = originalSrc + '?t=' + Date.now();
 
-            // Потом показываем
+            // Then show
             preview.style.display = 'none';
             animation.style.display = 'block';
             controls.style.display = 'none';
@@ -552,7 +552,7 @@ function loadFlashPortfolio() {
 
     container.classList.add('flash-grid');
 
-    // Главный проект LDZ
+    // Main LDZ project
     const featuredProject = {
         title: "Flash-projekts Latvijas Dzelzceļam",
         description: "Stacijas dežurantu apmācība rīcībai ārkārtas situācijās",
@@ -564,12 +564,12 @@ function loadFlashPortfolio() {
     };
 
     container.innerHTML = `
-        <!-- Главный проект -->
+        <!-- Main project -->
         <div class="flash-featured-project">
             <div class="flash-project-content">
                 <div class="flash-image-container">
                     <img src="${featuredProject.image}" 
-                         alt="LDZ projekts" 
+                         alt="LDZ project" 
                          class="flash-featured-image"
                          loading="lazy">
                 </div>
@@ -585,10 +585,10 @@ function loadFlashPortfolio() {
             </div>
         </div>
 
- <!-- Flash баннеры -->
+ <!-- Flash banners -->
 <div class="flash-banners-section">
       <h4 class="flash-banners-title">Flash-banneri internetam</h4>
-    <p class="flash-banner-note">Flash tehnoloģija vairs netiek atbalstīta - demonstrēts video formātā</p>
+    <p class="flash-banner-note">Flash technology no longer supported - demonstrated in video format</p>
     <div class="flash-banners-grid">
         <div class="flash-banner-item">
             <div class="flash-banner-content">
@@ -663,7 +663,7 @@ function setupFlashBanners() {
 
         content.addEventListener('mouseleave', function () {
             video.pause();
-            // Превью не показываем!
+            // Don't show preview!
         });
     });
 }
@@ -710,8 +710,8 @@ function showComingSoon() {
         <div class="portfolio-item coming-soon">
             <div style="text-align: center; padding: 60px 20px;">
                 <i class="fas fa-clock" style="font-size: 48px; color: #3498db; margin-bottom: 20px;"></i>
-                <h3 style="color: #2c3e50; margin-bottom: 10px;">Drīzumā gaidāmais saturs</h3>
-                <p style="color: #7f8c8d;">Šī sadaļa tiek izstrādāta</p>
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Content coming soon</h3>
+                <p style="color: #7f8c8d;">This section is under development</p>
             </div>
         </div>
     `;
@@ -748,20 +748,20 @@ function load3DPortfolio() {
     container.innerHTML = `
         <div class="modeling3d-wrapper">
             <div class="modeling3d-canvas">
-                <!-- Текст описания -->
+                <!-- Description text -->
                 <div class="modeling3d-description">
-                    <h3 class="modeling3d-title">${projectData?.title || 'Klientu termināla 3D modelis'}</h3>
-                    <p class="modeling3d-subtitle">${projectData?.description || 'Modelis tika izmantots uzņēmumā vizuālajām prezentācijām.'}</p>
+                    <h3 class="modeling3d-title">${projectData?.title || 'Client terminal 3D model'}</h3>
+                    <p class="modeling3d-subtitle">${projectData?.description || 'Model was used in company for visual presentations.'}</p>
                 </div>
                 
-                <!-- Основной контент -->
+                <!-- Main content -->
                 <div class="modeling3d-content">
-                    <!-- Левая колонка - 3D модель -->
+                    <!-- Left column - 3D model -->
                     <div class="modeling3d-left">
                         <div class="modeling3d-model-section">
                             <div class="sketchfab-embed-wrapper">
                                 <iframe 
-                                    title="Klientu termināls" 
+                                    title="Client terminal" 
                                     frameborder="0" 
                                     allowfullscreen 
                                     mozallowfullscreen="true" 
@@ -779,7 +779,7 @@ function load3DPortfolio() {
                                        target="_blank" 
                                        rel="nofollow" 
                                        style="font-weight: bold; color: #1CAAD9;">
-                                        Klientu termināls
+                                        Client terminal
                                     </a> by 
                                     <a href="https://sketchfab.com/alexbob?utm_medium=embed&utm_campaign=share-popup&utm_content=3eed04834abb4f7b933c17d78e00f248" 
                                        target="_blank" 
@@ -798,17 +798,17 @@ function load3DPortfolio() {
                         </div>
                     </div>
                     
-                    <!-- Правая колонка - галерея -->
+                    <!-- Right column - gallery -->
                     <div class="modeling3d-right">
-                        <!-- Реальная фотография -->
+                        <!-- Real photo -->
                         <div class="modeling3d-image-item">
                             <img src="assets/portfolio/3d/real_photo.jpg" 
-                                 alt="${projectData?.realPhotoAlt || 'Reālie klientu termināli'}" 
+                                 alt="${projectData?.realPhotoAlt || 'Real client terminals'}" 
                                  class="modeling3d-image real-photo"
                                  loading="lazy">
                         </div>
                         
-                        <!-- Рендеры с иконками кликабельности -->
+                        <!-- Renders with clickability icons -->
                         <div class="modeling3d-renders-grid">
                             <div class="modeling3d-render-container" data-image="render1.jpg">
                                 <img src="assets/portfolio/3d/render1.jpg" 
@@ -831,7 +831,7 @@ function load3DPortfolio() {
         </div>
     `;
 
-    // Добавляем обработчики кликов
+    // Add click handlers
     setupRenderClickHandlers();
 }
 
@@ -855,13 +855,13 @@ function loadFlexographyPortfolio() {
     container.innerHTML = `
         <div class="flexography-wrapper">
             <div class="flexography-canvas">
-                <!-- ОБЩИЙ ЗАГОЛОВОК -->
+                <!-- COMMON HEADER -->
                 <div class="flexography-header">
                     <h3>${flexographyData.header}</h3>
                 </div>
                 
                 <div class="flexography-works">
-                    <!-- Левая работа -->
+                    <!-- Left work -->
                     <div class="flexography-work-left">
                         ${leftProject ? `
                             <div class="work-text">
@@ -877,7 +877,7 @@ function loadFlexographyPortfolio() {
                         ` : ''}
                     </div>
                     
-                    <!-- Правая работа -->
+                    <!-- Right work -->
                     <div class="flexography-work-right">
                         ${rightProject ? `
                             <div class="work-text">
@@ -901,12 +901,12 @@ document.addEventListener('DOMContentLoaded', function () {
     initPortfolio();
 });
 
-// Функция для обновления переводов из основного скрипта
+// Function to update translations from main script
 function updatePortfolioTranslations(newTranslations) {
     portfolioTranslations = newTranslations;
     updateMenuFromTranslations();
 
-    // Если активна вкладка 3D - перезагружаем контент
+    // If 3D tab is active - reload content
     if (PORTFOLIO_CONFIG.currentCategory === '3d') {
         load3DPortfolio();
     }

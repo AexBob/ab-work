@@ -8,11 +8,7 @@
 .portfolio-grid {
     width: 100%;
     margin: 0 auto;
-    /* overflow: visible; */
 }
-
-
-
 
 .video-grid,
 .gif-grid {
@@ -37,7 +33,6 @@
     padding: 50px 60px 50px 60px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #f4f4f4;
-
 }
 
 /* ===== COMMON ITEM STYLES ===== */
@@ -115,7 +110,6 @@
     margin-top: 25px;
 }
 
-/* GIF Preview/Animation States - ВАЖНО для работы GIF */
 .gif-preview {
     display: block;
     opacity: 1;
@@ -191,7 +185,6 @@
     opacity: 1;
 }
 
-/* Скрываем кнопки когда GIF играет */
 .gif-item.playing .gif-controls {
     opacity: 0;
 }
@@ -338,7 +331,6 @@
     height: 100%;
     left: 0px;
     top: 0px;
-    /* background-color: #3498db; */
     cursor: url('../assets/images/zoom_pointer.png') 14 18, auto;
 }
 
@@ -370,7 +362,6 @@
     height: 600px;
     border-radius: 8px;
 }
-
 
 /* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 1200px) {
@@ -424,7 +415,6 @@
         width: 100%;
     }
 
-    /* Адаптивность для коллажа */
     .collage-wrapper {
         cursor: crosshair;
     }
@@ -437,7 +427,6 @@
 }
 
 @media (max-width: 480px) {
-
     .video-grid,
     .gif-grid {
         grid-template-columns: 1fr !important;
@@ -460,7 +449,6 @@
         aspect-ratio: 16/9;
     }
 
-    /* Мобильная адаптация коллажа */
     .collage-container {
         padding: 10px 0;
     }
@@ -473,13 +461,6 @@
         width: 250px !important;
         height: 250px !important;
     }
-
-    .loading-indicator {
-        bottom: 10px;
-        right: 10px;
-        font-size: 11px;
-        padding: 6px 10px;
-    }
 }
 
 /* ===== FLASH GRID STYLES ===== */
@@ -491,7 +472,6 @@
     overflow: hidden;
 }
 
-/* Главный проект */
 .flash-featured-project {
     background: #fff;
     border-radius: 15px;
@@ -534,11 +514,9 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    /* Показывает верхнюю часть в компактном виде */
     display: block;
     transition: transform 0.4s ease;
 }
-
 
 .flash-text-container {
     padding: 0;
@@ -581,7 +559,6 @@
     font-weight: bold;
 }
 
-/* Секция баннеров */
 .flash-banners-section {
     margin: 20px;
 }
@@ -610,8 +587,6 @@
     margin-bottom: 20px;
 }
 
-
-
 .flash-banner-content {
     position: relative;
     display: inline-block;
@@ -624,7 +599,6 @@
     display: block;
     opacity: 1;
     position: relative;
-    /* Возвращаем */
     left: 50%;
     transform: translateX(-50%);
 }
@@ -640,7 +614,6 @@
     left: 50%;
     transform: translateX(-50%);
 }
-
 
 .play-overlay {
     position: absolute;
@@ -664,9 +637,6 @@
     z-index: 10;
 }
 
-
-
-
 .flash-banner-item:hover .play-overlay {
     opacity: 0;
 }
@@ -680,7 +650,6 @@
     font-size: 1.3em;
     color: #2c3e50;
     margin-bottom: 0px;
-    /* Было 25px - уменьшаем */
     text-align: center;
     font-weight: 600;
 }
@@ -693,7 +662,6 @@
     font-style: italic;
 }
 
-/* Адаптивность */
 @media (max-width: 1200px) {
     .flash-project-content {
         grid-template-columns: 500px 1fr;
@@ -713,16 +681,9 @@
         width: 100% !important;
     }
 
-
     .flash-project-content {
         grid-template-columns: 1fr;
         gap: 25px;
-    }
-
-
-
-    .flash-banners-grid {
-        grid-template-columns: 1fr;
     }
 }
 
@@ -736,14 +697,12 @@
     background: #fff;
     border-radius: 15px;
     padding: 25px 20px 40px 40px;
-
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #f4f4f4;
     min-height: 400px;
     width: 100%;
 }
 
-/* Общий заголовок */
 .flexography-header {
     text-align: center;
     margin-bottom: 40px;
@@ -758,14 +717,12 @@
     margin: 0;
 }
 
-/* Контейнер для двух работ */
 .flexography-works {
     display: flex;
     gap: 50px;
     align-items: flex-start;
 }
 
-/* Левая работа */
 .flexography-work-left {
     flex: 0 0 50%;
     display: flex;
@@ -774,25 +731,20 @@
     text-align: center;
 }
 
-/* Правая работа */
 .flexography-work-right {
     flex: 0 0 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-
 }
 
-/* Текст работы */
 .work-text {
     text-align: left;
-    /* Меняем center на left */
 }
 
 .work-text p {
     color: #555;
-    /* line-height: 1.6; */
     font-size: 1.1em;
 }
 
@@ -806,7 +758,6 @@
     font-weight: 700;
 }
 
-/* Фиксированная высота текстовых блоков */
 .flexography-work-left .work-text {
     min-height: 115px;
 }
@@ -815,7 +766,6 @@
     min-height: 115px;
 }
 
-/* Горизонтальные картинки слева */
 .work-images-horizontal {
     display: flex;
     flex-direction: row;
@@ -823,7 +773,6 @@
     justify-content: center;
 }
 
-/* Картинки слева */
 .horizontal-image-item img {
     width: auto;
     max-width: 100%;
@@ -831,14 +780,12 @@
     object-fit: contain;
 }
 
-/* Картинка справа */
 .work-image-horizontal img {
     width: 100%;
     height: auto;
     object-fit: contain;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .flexography-wrapper {
         width: 100%;
@@ -872,7 +819,6 @@
         margin-bottom: 15px;
     }
 
-    /* На мобильных убираем фиксированную высоту текста */
     .flexography-work-left .work-text,
     .flexography-work-right .work-text {
         min-height: auto;
@@ -900,7 +846,6 @@
     display: flex;
 }
 
-/* Sketchfab embed styles */
 .sketchfab-embed-wrapper {
     width: 100%;
     border-radius: 15px;
@@ -916,9 +861,6 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-
-
-/* Author info and link styles */
 .sketchfab-attribution {
     font-size: 13px;
     font-weight: normal;
@@ -940,7 +882,6 @@
     text-decoration: underline;
 }
 
-/* 3D Modeling content layout */
 .modeling3d-content {
     display: grid;
     grid-template-columns: 55% auto;
@@ -959,7 +900,6 @@
     gap: 30px;
 }
 
-/* Description styles */
 .modeling3d-description {
     text-align: center;
     margin-bottom: 30px;
@@ -983,7 +923,6 @@
     margin: 0 auto;
 }
 
-/* Image styles */
 .modeling3d-image-item {
     text-align: center;
 }
@@ -999,7 +938,6 @@
     height: auto;
 }
 
-/* Render containers */
 .modeling3d-renders-grid {
     display: grid;
     grid-template-columns: 39.1% auto;
@@ -1030,14 +968,12 @@
     border-radius: 8px;
 }
 
-/* =============================================== */
 .modeling3d-render-container {
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
-/* Затемнение фона */
 .modeling3d-render-container::before {
     content: '';
     position: absolute;
@@ -1053,7 +989,6 @@
     pointer-events: none;
 }
 
-/* Ховер эффекты */
 .modeling3d-render-container:hover {
     transform: translateY(-3px);
 }
@@ -1066,17 +1001,9 @@
     opacity: 1;
 }
 
-/* Уголок поверх затемнения */
 .render-hint {
     z-index: 2;
 }
-
-
-/* =============================================== */
-
-
-
-
 
 .render-hint {
     position: absolute;
@@ -1107,11 +1034,9 @@
 
 .render-hint:hover {
     background: rgba(255, 255, 255, 1);
-    /* Меньше прозрачности при ховере */
     box-shadow: -2px 2px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* After click. Open Modal Windows */
 .image-modal-overlay {
     position: fixed;
     top: 0;
@@ -1163,9 +1088,6 @@
     object-fit: contain;
 }
 
-
-
-/* Responsive styles */
 @media (max-width: 768px) {
     .modeling3d-canvas {
         padding: 25px;

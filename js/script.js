@@ -1,19 +1,19 @@
-// Конфигурация
+// Configuration
 const CONFIG = {
     defaultLanguage: 'lv',
     contentPath: 'content'
 };
 
-// Текущий язык
+// Current language
 let currentLanguage = CONFIG.defaultLanguage;
 
-// Глобальная переменная для переводов
+// Global variable for translations
 window.translations = null;
 
-// Загрузка контента
+// Load content
 async function loadContent(lang) {
     try {
-        console.log('Пытаюсь загрузить:', `${CONFIG.contentPath}/${lang}.json`);
+        console.log('Loading:', `${CONFIG.contentPath}/${lang}.json`);
         const response = await fetch(`${CONFIG.contentPath}/${lang}.json`);
 
         if (!response.ok) {
@@ -21,7 +21,7 @@ async function loadContent(lang) {
         }
 
         const data = await response.json();
-        console.log('JSON успешно загружен');
+        console.log('JSON loaded successfully');
         return data;
 
     } catch (error) {
@@ -30,14 +30,14 @@ async function loadContent(lang) {
     }
 }
 
-// Обновление контента на странице
+// Update page content
 function updateContent(data) {
     if (!data) return;
 
-    // Сохраняем переводы для portfolio.js
+    // Save translations for portfolio.js
     window.translations = data;
 
-    // Если portfolio.js уже загружен, обновляем переводы
+    // If portfolio.js is already loaded, update translations
     if (window.updatePortfolioTranslations) {
         window.updatePortfolioTranslations(data);
     }
@@ -62,7 +62,7 @@ function updateContent(data) {
     if (data.home) {
         updateElementsByDataAttr('home.name', data.home.name);
         updateElementsByDataAttr('home.title', data.home.title);
-        // Добавляем новые поля:
+        // Add new fields:
         updateElementsByDataAttr('home.mainTitle', data.home.mainTitle);
         updateElementsByDataAttr('home.description', data.home.description);
     }
@@ -87,7 +87,7 @@ function updateContent(data) {
     // Portfolio section (with check)
     if (data.portfolio) {
         updateElementsByDataAttr('portfolio.title', data.portfolio.title);
-        // Данные для флексографии автоматически подхватятся через portfolioTranslations
+        // Flexography data will be picked up automatically via portfolioTranslations
     }
 
     // Contacts (with check)
@@ -100,7 +100,7 @@ function updateContent(data) {
     }
 }
 
-// Вспомогательные функции
+// Helper functions
 function updateElementsByDataAttr(attr, value) {
     const elements = document.querySelectorAll(`[data-i18n="${attr}"]`);
     elements.forEach(element => {
@@ -135,11 +135,11 @@ function renderExperience(experience) {
                             <div class="experience-additional-content-inner">
                                 ${Array.isArray(exp.additionalInfo) ?
                 exp.additionalInfo.map(item => {
-                    // Старый формат (просто строки)
+                    // Old format (simple strings)
                     if (typeof item === 'string') {
                         return `<div class="experience-text">${item}</div>`;
                     }
-                    // Новый формат (объекты с type)
+                    // New format (objects with type)
                     else if (item.type === 'text') {
                         return `<div class="experience-text">${item.content}</div>`;
                     } else if (item.type === 'list') {
@@ -164,7 +164,6 @@ function renderExperience(experience) {
 
     setupExperienceToggles();
 }
-
 
 function renderEducation(educationItems) {
     const container = document.getElementById('education-list');
@@ -197,16 +196,16 @@ function renderEducation(educationItems) {
         </div>
     `).join('');
 
-    // Настраиваем переключатели
+    // Setup toggles
     setupEducationToggles();
 
-    // Если это активная вкладка - запускаем анимацию
+    // If this is active tab - start animation
     if (document.getElementById('education-tab')?.classList.contains('active')) {
         setupEducationAttention();
     }
 }
 
-// Обработчики для раскрытия дополнительной информации
+// Handlers for additional information expansion
 function setupEducationToggles() {
     const toggles = document.querySelectorAll('.education-toggle');
 
@@ -215,7 +214,7 @@ function setupEducationToggles() {
             const content = this.nextElementSibling;
             const isActive = content.classList.contains('active');
 
-            // Закрываем все остальные
+            // Close all others
             document.querySelectorAll('.education-additional-content').forEach(item => {
                 item.classList.remove('active');
             });
@@ -223,7 +222,7 @@ function setupEducationToggles() {
                 btn.classList.remove('active');
             });
 
-            // Открываем/закрываем текущий
+            // Open/close current
             if (!isActive) {
                 content.classList.add('active');
                 this.classList.add('active');
@@ -235,43 +234,44 @@ function setupEducationToggles() {
 let educationAnimationShown = false;
 
 function setupEducationAttention() {
-    // Проверяем, показывалась ли уже анимация в этой сессии
+    // Check if animation was already shown in this session
     if (educationAnimationShown) {
         return;
     }
 
-    // Ждем секунду после захода на вкладку образования
+    // Wait a second after entering education tab
     setTimeout(() => {
         const firstEducationToggle = document.querySelector('#education-tab .education-toggle');
 
         if (firstEducationToggle) {
-            // Анимируем увеличение и возврат
+            // Animate scaling and return
             firstEducationToggle.style.transition = 'all 0.1s ease';
 
-            // Первое увеличение
+            // First scale up
             setTimeout(() => {
                 firstEducationToggle.style.transform = 'scale(1.05)';
             }, 100);
 
-            // Возврат к нормальному размеру
+            // Return to normal size
             setTimeout(() => {
                 firstEducationToggle.style.transform = 'scale(1.0)';
             }, 300);
 
-            // Второе увеличение
+            // Second scale up
             setTimeout(() => {
                 firstEducationToggle.style.transform = 'scale(1.05)';
             }, 500);
 
-            // Финальный возврат
+            // Final return
             setTimeout(() => {
                 firstEducationToggle.style.transform = 'scale(1.0)';
-                // Помечаем что анимация была показана
+                // Mark that animation was shown
                 educationAnimationShown = true;
             }, 700);
         }
     }, 1500);
 }
+
 function renderLanguages(languagesItems) {
     const container = document.getElementById('languages-list');
     if (!container) return;
@@ -288,7 +288,7 @@ function renderLanguages(languagesItems) {
         </div>
     `).join('');
 
-    // Добавляем анимацию при загрузке
+    // Add animation on load
     setTimeout(() => {
         const bars = container.querySelectorAll('.language-bar');
         bars.forEach(bar => bar.classList.add('animated'));
@@ -299,7 +299,7 @@ function renderSkills(skills) {
     const container = document.getElementById('skills-list');
     if (!container) return;
 
-    // Иконки для каждой категории
+    // Icons for each category
     const categoryIcons = {
         'Vadības un komunikācijas prasmes': 'fas fa-users-cog',
         'Datorprasmes': 'fas fa-laptop-code',
@@ -344,7 +344,7 @@ function renderInterests(interests) {
 
     let html = '';
 
-    // Одиночные элементы (семья, языки)
+    // Single items (family, languages)
     if (interests.singleItems && interests.singleItems.length > 0) {
         interests.singleItems.forEach(item => {
             html += `
@@ -356,7 +356,7 @@ function renderInterests(interests) {
         });
     }
 
-    // Категории (спорт)
+    // Categories (sports)
     if (interests.categories && interests.categories.length > 0) {
         interests.categories.forEach(category => {
             html += `
@@ -378,47 +378,60 @@ function renderInterests(interests) {
     container.innerHTML = html;
 }
 
+// Skills hover functionality with persistent active category
 function setupSkillsHover() {
     const categoryBtns = document.querySelectorAll('.skill-category-btn');
     const contentPanes = document.querySelectorAll('.skills-content-pane');
+    
+    let activeCategory = 'management'; // Track active category
 
     categoryBtns.forEach(btn => {
         btn.addEventListener('mouseenter', function () {
-            // Убираем активный класс у всех кнопок и панелей
+            // Remove active class from all
             categoryBtns.forEach(b => b.classList.remove('active'));
             contentPanes.forEach(p => p.classList.remove('active'));
 
-            // Добавляем активный класс текущей кнопке
+            // Add active to current
             this.classList.add('active');
 
-            // Показываем соответствующую панель
+            // Show corresponding pane
             const categoryName = this.getAttribute('data-category');
             const targetPane = document.getElementById(`pane-${categoryName}`);
             if (targetPane) {
                 targetPane.classList.add('active');
+                activeCategory = categoryName; // Update active category
             }
+        });
+
+        // Click for additional reliability
+        btn.addEventListener('click', function () {
+            const categoryName = this.getAttribute('data-category');
+            activeCategory = categoryName;
         });
     });
 
-    // Чтобы контент не пропадал при перемещении мыши внутри панели
-    const contentArea = document.querySelector('.skills-content-area');
-    contentArea.addEventListener('mouseenter', function () {
-        // Не делаем ничего - оставляем текущую панель активной
-    });
-
-    // Восстанавливаем первую панель при уходе мыши из всего блока
+    // Restore active category on mouse leave
     const sidebarLayout = document.querySelector('.skills-sidebar-layout');
     sidebarLayout.addEventListener('mouseleave', function () {
         categoryBtns.forEach(b => b.classList.remove('active'));
         contentPanes.forEach(p => p.classList.remove('active'));
 
-        // Активируем первую кнопку и панель
-        if (categoryBtns[0]) categoryBtns[0].classList.add('active');
-        if (contentPanes[0]) contentPanes[0].classList.add('active');
+        // Activate last active category
+        const activeBtn = document.querySelector(`.skill-category-btn[data-category="${activeCategory}"]`);
+        const activePane = document.getElementById(`pane-${activeCategory}`);
+        
+        if (activeBtn) activeBtn.classList.add('active');
+        if (activePane) activePane.classList.add('active');
+    });
+
+    // Keep content visible when mouse inside content area
+    const contentArea = document.querySelector('.skills-content-area');
+    contentArea.addEventListener('mouseenter', function () {
+        // Do nothing - maintain current active pane
     });
 }
 
-// Навигация по разделам
+// Section navigation
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
@@ -427,11 +440,11 @@ function setupNavigation() {
         link.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Убираем активный класс у всех
+            // Remove active class from all
             navLinks.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
 
-            // Добавляем активный класс текущей
+            // Add active class to current
             this.classList.add('active');
             const sectionId = this.getAttribute('data-section');
             const targetSection = document.getElementById(sectionId);
@@ -443,7 +456,7 @@ function setupNavigation() {
     });
 }
 
-// Переключение языков
+// Language switching
 function setupLanguageSwitcher() {
     const langButtons = document.querySelectorAll('.lang-btn');
 
@@ -452,7 +465,7 @@ function setupLanguageSwitcher() {
             const lang = this.getAttribute('data-lang');
             currentLanguage = lang;
 
-            // Обновляем активную кнопку
+            // Update active button
             langButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
@@ -463,35 +476,35 @@ function setupLanguageSwitcher() {
         });
     });
 
-    // Активируем кнопку текущего языка
+    // Activate current language button
     const currentLangBtn = document.querySelector(`.lang-btn[data-lang="${currentLanguage}"]`);
     if (currentLangBtn) {
         currentLangBtn.classList.add('active');
     }
 }
 
-// Вкладки в разделе "Обо мне"
+// Tabs in About section
 function setupAboutTabs() {
     const tabBtns = document.querySelectorAll('.about-tab-btn');
     const tabPanes = document.querySelectorAll('.about-tab-pane');
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', function () {
-            // Убираем активный класс у всех кнопок и вкладок
+            // Remove active class from all buttons and tabs
             tabBtns.forEach(b => b.classList.remove('active'));
             tabPanes.forEach(p => p.classList.remove('active'));
 
-            // Добавляем активный класс текущей кнопке
+            // Add active class to current button
             this.classList.add('active');
 
-            // Показываем соответствующую вкладку
+            // Show corresponding tab
             const tabId = this.getAttribute('data-tab');
             const targetPane = document.getElementById(`${tabId}-tab`);
 
             if (targetPane) {
                 targetPane.classList.add('active');
 
-                // Если это вкладка образования - запускаем анимацию
+                // If it's education tab - start animation
                 if (tabId === 'education') {
                     setupEducationAttention();
                 }
@@ -500,7 +513,7 @@ function setupAboutTabs() {
     });
 }
 
-// Улучшение UX для формы обратной связи
+// UX improvement for contact form
 function setupFormFeedback() {
     const contactForm = document.querySelector('.contact-form form');
 
@@ -508,12 +521,12 @@ function setupFormFeedback() {
         contactForm.addEventListener('submit', function (e) {
             const submitBtn = this.querySelector('.submit-btn');
             if (submitBtn) {
-                // Меняем текст и добавляем спиннер
+                // Change text and add spinner
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sūta...';
-                // Блокируем кнопку
+                // Disable button
                 submitBtn.disabled = true;
 
-                // Автоматическое восстановление кнопки через 10 секунд (на случай ошибки)
+                // Auto restore button after 10 seconds (in case of error)
                 setTimeout(() => {
                     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Sūtīt ziņu';
                     submitBtn.disabled = false;
@@ -523,28 +536,28 @@ function setupFormFeedback() {
     }
 }
 
-// Инициализация
+// Initialization
 document.addEventListener('DOMContentLoaded', async function () {
-    console.log('Страница загружена, начинаем инициализацию');
+    console.log('Page loaded, starting initialization');
 
-    // Сначала настраиваем навигацию (чтобы меню работало сразу)
+    // First setup navigation (so menu works immediately)
     setupNavigation();
-    // setupLanguageSwitcher(); // Временно отключено
+    // setupLanguageSwitcher(); // Temporarily disabled
 
-    // Затем загружаем контент
+    // Then load content
     const data = await loadContent(currentLanguage);
 
     if (data) {
         updateContent(data);
     }
 
-    // Настраиваем табы
+    // Setup tabs
     setupAboutTabs();
 
-    // Настраиваем форму обратной связи
+    // Setup contact form
     setupFormFeedback();
 
-    console.log('Инициализация завершена');
+    console.log('Initialization completed');
 });
 
 function setupExperienceToggles() {
@@ -555,7 +568,7 @@ function setupExperienceToggles() {
             const content = this.nextElementSibling;
             const isActive = content.classList.contains('active');
 
-            // Закрываем все остальные
+            // Close all others
             document.querySelectorAll('.experience-additional-content').forEach(item => {
                 item.classList.remove('active');
             });
@@ -563,7 +576,7 @@ function setupExperienceToggles() {
                 btn.classList.remove('active');
             });
 
-            // Открываем/закрываем текущий
+            // Open/close current
             if (!isActive) {
                 content.classList.add('active');
                 this.classList.add('active');

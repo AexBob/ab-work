@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <!-- Боковое навигационное меню -->
+    <!-- Side Navigation Menu -->
     <nav class="side-nav">
         <ul>
             <li><a href="#home" class="nav-link active" data-section="home" data-i18n="nav.home">Sākums</a></li>
@@ -21,7 +21,7 @@
             <li><a href="#contact" class="nav-link" data-section="contact" data-i18n="nav.contact">Kontakti</a></li>
         </ul>
 
-        <!-- Переключатель языков -->
+        <!-- Language Switcher -->
         <div class="language-switcher">
             <button class="lang-btn" data-lang="lv">LV</button>
             <button class="lang-btn" data-lang="en">EN</button>
@@ -29,15 +29,14 @@
         </div>
     </nav>
 
-    <!-- Основное содержимое -->
+    <!-- Main Content -->
     <main class="content">
-        <!-- Раздел: Главная -->
+        <!-- Section: Home -->
         <section id="home" class="section active">
             <div class="alex">
                 <img src="assets/images/photo.png" alt="Aleksejs Babenko" class="alex-image">
                 <div class="alex-content">
                     <h1 data-i18n="home.name">Aleksejs Babenko</h1>
-
 
                     <h2 class="main-subtitle" data-i18n="home.mainTitle">Daudzpusīgs speciālists ar tehnisko, vadības un
                         radošo pieredzi</h2>
@@ -57,9 +56,9 @@
             </div>
         </section>
 
-        <!-- Раздел: Обо мне -->
+        <!-- Section: About Me -->
         <section id="about" class="section">
-            <!-- Вкладки для всех разделов -->
+            <!-- Tabs for all sections -->
             <div class="about-tabs-container">
                 <nav class="about-tabs-nav">
                     <button class="about-tab-btn active" data-tab="work">
@@ -89,30 +88,30 @@
                 </nav>
 
                 <div class="about-tabs-content">
-                    <!-- Вкладка: Опыт работы -->
+                    <!-- Tab: Work Experience -->
                     <div id="work-tab" class="about-tab-pane active">
                         <div class="experience-list" id="experience-cards">
-                            <!-- Контент будет загружен из JSON -->
+                            <!-- Content will be loaded from JSON -->
                         </div>
                     </div>
 
-                    <!-- Вкладка: Образование -->
+                    <!-- Tab: Education -->
                     <div id="education-tab" class="about-tab-pane">
                         <div class="education-section">
                             <div id="education-list">
-                                <!-- Контент будет загружен из JSON -->
+                                <!-- Content will be loaded from JSON -->
                             </div>
                         </div>
                     </div>
 
-                    <!-- Вкладка: Языки -->
+                    <!-- Tab: Languages -->
                     <div id="languages-tab" class="about-tab-pane">
                         <div class="language-bars" id="languages-list">
-                            <!-- Контент будет загружен из JSON -->
+                            <!-- Content will be loaded from JSON -->
                         </div>
                     </div>
 
-                    <!-- Вкладка: Другие навыки -->
+                    <!-- Tab: Other Skills -->
                     <div id="skills-tab" class="about-tab-pane">
                         <div id="skills-list">
                             <div class="skills-sidebar-layout">
@@ -150,22 +149,22 @@
                                 </div>
 
                                 <div class="skills-content-area">
-                                    <!-- Контент будет загружен из JSON -->
+                                    <!-- Content will be loaded from JSON -->
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Вкладка: Хобби и интересы -->
+                    <!-- Tab: Hobbies and Interests -->
                     <div id="interests-tab" class="about-tab-pane">
                         <div class="interests-container">
-                            <!-- Семья на первом месте -->
+                            <!-- Family first -->
                             <div class="interest-single family-item">
                                 <i class="fa-solid fa-people-roof interest-single-icon"></i>
                                 <div class="interest-single-text">Laiks ar ģimeni</div>
                             </div>
 
-                            <!-- Категория: Спорт -->
+                            <!-- Category: Sports -->
                             <div class="interest-category">
                                 <h3 class="interest-category-title">Sports</h3>
                                 <div class="interest-items">
@@ -184,7 +183,7 @@
                                 </div>
                             </div>
 
-                            <!-- Изучение языков -->
+                            <!-- Language Learning -->
                             <div class="interest-single">
                                 <i class="fas fa-language interest-single-icon"></i>
                                 <div class="interest-single-text">Valodu apgūšana</div>
@@ -192,7 +191,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
@@ -205,16 +203,15 @@
             <div class="portfolio-grid" id="projects-list"></div>
         </section>
 
-        <!-- Раздел: Контакты -->
+        <!-- Section: Contacts -->
         <section id="contact" class="section">
             <div class="contact-container">
-                <!-- <h2 data-i18n="contact.title">Sazināties</h2> -->
                 <p class="contact-description" data-i18n="contact.description">
                     Jūs varat sazināties ar mani, izmantojot šādas metodes:
                 </p>
 
                 <div class="contact-content">
-                    <!-- Контактные карточки -->
+                    <!-- Contact Cards -->
                     <div class="contact-cards">
                         <div class="contact-card">
                             <div class="contact-icon">
@@ -247,7 +244,7 @@
                         </div>
                     </div>
 
-                    <!-- Форма обратной связи -->
+                    <!-- Contact Form -->
                     <div class="contact-form">
                         <h3><i class="fas fa-paper-plane"></i> Sūtiet man ziņu</h3>
                         <form action="https://formspree.io/f/xnngpzbz" method="POST">
