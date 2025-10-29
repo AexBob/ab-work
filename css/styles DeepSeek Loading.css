@@ -128,43 +128,47 @@ body {
 }
 
 .alex {
-    display: grid;
-    /* grid-template-columns: 30% 70%; */
-    grid-template-columns:  3fr 5.7fr;;
+    display: flex;
+    align-items: flex-start;
     gap: 50px;
     position: fixed;
     bottom: 0;
-    height: 90vh;
-    /* align-items: end; */
-     /* background-color: #ccbf2e; */
+    margin: auto;
+    z-index: 100;
+
+
 }
+
+
+/* .alex-image {
+    display: none;
+    height: 640px;
+    object-fit: contain;
+    background: transparent;
+} */
+
+/* .alex-image.active {
+    display: block;
+} */
 
 .alex-video-container {
-    /* background-color: #2ecc71; */
-    height: 100%;
-    display: flex;
-    /* align-items: end; */
-    
-}
+background-color: #2ecc71;
+ flex: .3;
 
+}
 .alex-video {
     height: 90vh;
-    /* width: 100%; */
-    /* object-fit: contain; */
-    /* margin: -140px 0 0 0; */
+    object-fit: contain;
+    background: transparent;
+    display: block;
+    margin: -140px 0 0 0;
     filter: drop-shadow(-10px -5px 15px rgba(0, 0, 0, 0.4));
-     /* align-items: flex-end; */
 }
 
 .alex-content {
-    /* background-color: #3498db; */
-    height: 100%;
-    /* display: flex; */
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+background-color: #3498db;
+    flex: 1;
 }
-
 
 .alex h1 {
     font-size: 2.5em;
@@ -1251,4 +1255,44 @@ body {
 /* ===== OPERA VIDEO CONTROLS FIX ===== */
 #detach-button-host {
     display: none !important;
+}
+
+/* ******************************************* */
+
+.alex {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 50px;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 140px);
+    left: 80px;
+    height: 90vh; /* fiksēts augstums */
+    align-items: end; /* visu apakšā */
+    
+
+}
+
+.alex-video-container {
+    background-color: #2ecc71;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.alex-video {
+    height: 90vh;
+    width: 100%;
+    object-fit: contain;
+    margin: -140px 0 0 0;
+    filter: drop-shadow(-10px -5px 15px rgba(0, 0, 0, 0.4));
+}
+
+.alex-content {
+    background-color: #3498db;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 30px;
 }
