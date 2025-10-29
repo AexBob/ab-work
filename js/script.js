@@ -382,7 +382,7 @@ function renderInterests(interests) {
 function setupSkillsHover() {
     const categoryBtns = document.querySelectorAll('.skill-category-btn');
     const contentPanes = document.querySelectorAll('.skills-content-pane');
-    
+
     let activeCategory = 'management'; // Track active category
 
     categoryBtns.forEach(btn => {
@@ -419,7 +419,7 @@ function setupSkillsHover() {
         // Activate last active category
         const activeBtn = document.querySelector(`.skill-category-btn[data-category="${activeCategory}"]`);
         const activePane = document.getElementById(`pane-${activeCategory}`);
-        
+
         if (activeBtn) activeBtn.classList.add('active');
         if (activePane) activePane.classList.add('active');
     });
@@ -584,3 +584,51 @@ function setupExperienceToggles() {
         });
     });
 }
+
+// ===== HOME PAGE ANIMATION =====
+document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('video-player');
+
+    // Set video to first frame and pause
+    video.currentTime = 0;
+    video.pause();
+
+    setTimeout(() => {
+        // After 2 seconds start playing
+        video.play();
+    }, 2000);
+});
+
+// ===== VIDEO RESTART ON HOME NAVIGATION =====
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const targetSection = this.getAttribute('data-section');
+
+            // Restart video when returning to home section
+            if (targetSection === 'home') {
+                restartHomeVideo();
+            }
+        });
+    });
+});
+
+function restartHomeVideo() {
+    const video = document.getElementById('video-player');
+    if (video) {
+        // Reset video to beginning and pause
+        video.currentTime = 0;
+        video.pause();
+
+        // Wait 2 seconds before playing
+        setTimeout(() => {
+            video.play().catch(error => {
+                console.log('Video play prevented:', error);
+            });
+        }, 2000); // 2 second delay
+    }
+}
+
+

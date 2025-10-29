@@ -116,34 +116,51 @@ body {
 /* ===== HOME PAGE ===== */
 #home {
     background:
-        linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0.619)),
+        /* linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0.619)), */
         url('/assets/images/background_home.jpg') center/cover;
     background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 #home.active {
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
 .alex {
     display: flex;
     align-items: flex-start;
     gap: 50px;
-    text-align: left;
-    padding: 80px 0;
-    max-width: 1200px;
-    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    z-index: 100;
+
+
 }
 
-.alex-image {
-    height: 480px;
-    object-fit: cover;
-    flex-shrink: 0;
-    margin: -60px 0 0 0;
+/* .alex-image {
+    display: none;
+    height: 640px;
+    object-fit: contain;
+    background: transparent;
+} */
+
+.alex-image.active {
+    display: block;
+}
+
+.alex-video {
+    height: 90vh;
+    object-fit: contain;
+    background: transparent;
+    display: block;
+    margin: -140px 0 0 0;
+    filter: drop-shadow(-10px -5px 15px rgba(0, 0, 0, 0.4));
 }
 
 .alex-content {
+    
     flex: 1;
 }
 
@@ -184,10 +201,12 @@ body {
     font-size: 1.1em;
     max-width: 640px;
     text-justify: inter-word;
+    filter: drop-shadow(5px 1px 3px rgba(0, 0, 0, 0.2));
 }
 
 .alex-actions {
     margin-top: 30px;
+    filter: drop-shadow(5px 1px 3px rgba(0, 0, 0, 0.2));
 }
 
 .download-btn {
@@ -1224,4 +1243,10 @@ body {
 
 .experience-additional-content-inner>*:last-child {
     margin-bottom: 0;
+}
+
+
+/* ===== OPERA VIDEO CONTROLS FIX ===== */
+#detach-button-host {
+    display: none !important;
 }
