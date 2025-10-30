@@ -197,18 +197,23 @@
 .portfolio-tabs-nav {
     display: flex;
     position: relative;
-    z-index: 10;
     background: #f8f9fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #e9ecef;
     flex-wrap: wrap;
     justify-content: center;
     margin: 24px 0 30px 0;
-    border-radius: 10px 10px 0 0;
+    /* border-radius:  7px; */
     overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
 }
 
 .portfolio-tab-btn {
-    padding: 15px 20px;
+    padding: 8px 20px;
+    gap: 5px;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -223,7 +228,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     flex-direction: column;
 }
 
@@ -356,7 +360,7 @@
     background: transparent;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
     pointer-events: none;
-    z-index: 10000;
+    z-index: 9;
     display: none;
     width: 600px;
     height: 600px;
@@ -427,6 +431,7 @@
 }
 
 @media (max-width: 480px) {
+
     .video-grid,
     .gif-grid {
         grid-template-columns: 1fr !important;
@@ -467,7 +472,7 @@
 .flash-grid {
     display: flex;
     flex-direction: column;
-    width: 82%;
+    width: 83%;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -528,6 +533,7 @@
     color: #2c3e50;
     margin-bottom: 7px;
     font-weight: 600;
+    /* white-space: nowrap; */
 }
 
 .flash-project-description {

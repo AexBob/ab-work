@@ -638,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
         // After 2 seconds start playing
         video.play();
-    }, 3000);
+    }, 3100);
 });
 
 // ===== VIDEO RESTART ON HOME NAVIGATION =====
