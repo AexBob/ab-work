@@ -163,19 +163,23 @@ function renderExperience(experience) {
     `).join('');
 
     setupExperienceToggles();
+    // If this is active tab - start animation
+    if (document.getElementById('work-tab')?.classList.contains('active')) {
+        setupExperienceAttention();
+    }
 }
 
 function renderEducation(educationItems) {
     const container = document.getElementById('education-list');
     if (!container) return;
 
-    container.innerHTML = educationItems.map((edu, index) => `
+    container.innerHTML = educationItems.map((edu) => `
         <div class="education-item">
             <h4>${edu.degree}</h4>
             <p class="education-meta">${edu.institution} • ${edu.period}</p>
             ${edu.additionalInfo ? `
                 <div class="education-additional">
-                    <button class="education-toggle ${index === 0 ? 'attention-highlight' : ''}">
+                    <button class="education-toggle">
                         <i class="fas fa-chevron-down"></i>
                         Papildus informācija
                     </button>
@@ -233,6 +237,7 @@ function setupEducationToggles() {
 
 let educationAnimationShown = false;
 
+
 function setupEducationAttention() {
     // Check if animation was already shown in this session
     if (educationAnimationShown) {
@@ -269,7 +274,40 @@ function setupEducationAttention() {
                 educationAnimationShown = true;
             }, 700);
         }
-    }, 1500);
+    }, 2500);
+}
+
+let experienceAnimationShown = false;
+
+function setupExperienceAttention() {
+    if (experienceAnimationShown) {
+        return;
+    }
+
+    setTimeout(() => {
+        const firstExperienceToggle = document.querySelector('#work-tab .experience-toggle');
+
+        if (firstExperienceToggle) {
+            firstExperienceToggle.style.transition = 'all 0.1s ease';
+
+            setTimeout(() => {
+                firstExperienceToggle.style.transform = 'scale(1.05)';
+            }, 100);
+
+            setTimeout(() => {
+                firstExperienceToggle.style.transform = 'scale(1.0)';
+            }, 300);
+
+            setTimeout(() => {
+                firstExperienceToggle.style.transform = 'scale(1.05)';
+            }, 500);
+
+            setTimeout(() => {
+                firstExperienceToggle.style.transform = 'scale(1.0)';
+                sessionStorage.setItem('experienceAnimationShown', 'true');
+            }, 700);
+        }
+    }, 2500);
 }
 
 function renderLanguages(languagesItems) {
@@ -490,21 +528,25 @@ function setupAboutTabs() {
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', function () {
-            // Remove active class from all buttons and tabs
+            // Remove active class from all buttons
             tabBtns.forEach(b => b.classList.remove('active'));
+            // Hide all tab panes
             tabPanes.forEach(p => p.classList.remove('active'));
 
-            // Add active class to current button
+            // Activate clicked button
             this.classList.add('active');
 
-            // Show corresponding tab
+            // Get target tab ID and show corresponding pane
             const tabId = this.getAttribute('data-tab');
             const targetPane = document.getElementById(`${tabId}-tab`);
 
             if (targetPane) {
                 targetPane.classList.add('active');
 
-                // If it's education tab - start animation
+                // Trigger attention animations for specific tabs
+                if (tabId === 'work') {
+                    setupExperienceAttention();
+                }
                 if (tabId === 'education') {
                     setupEducationAttention();
                 }

@@ -1001,6 +1001,11 @@
     opacity: 1;
 }
 
+.modeling3d-render-container:hover .render-hint {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: -2px 2px 12px rgba(0, 0, 0, 0.3);
+}
+
 .render-hint {
     z-index: 2;
 }
@@ -1032,10 +1037,7 @@
     opacity: 0.5;
 }
 
-.render-hint:hover {
-    background: rgba(255, 255, 255, 1);
-    box-shadow: -2px 2px 12px rgba(0, 0, 0, 0.3);
-}
+
 
 .image-modal-overlay {
     position: fixed;
