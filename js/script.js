@@ -5,7 +5,7 @@ const CONFIG = {
 };
 
 // Current language
-let currentLanguage = CONFIG.defaultLanguage;
+const currentLanguage = CONFIG.defaultLanguage;
 
 // Global variable for translations
 window.translations = null;
@@ -63,8 +63,8 @@ function updateContent(data) {
         updateElementsByDataAttr('home.name', data.home.name);
         updateElementsByDataAttr('home.title', data.home.title);
         // Add new fields:
-        updateElementsByDataAttr('home.mainTitle', data.home.mainTitle);
-        updateElementsByDataAttr('home.description', data.home.description);
+        // updateElementsByDataAttr('home.mainTitle', data.home.mainTitle);
+        // updateElementsByDataAttr('home.description', data.home.description);
     }
 
     // About section - with existence checks
@@ -631,14 +631,18 @@ function setupExperienceToggles() {
 document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById('video-player');
 
-    // Set video to first frame and pause
-    video.currentTime = 0;
+    // Neļaujam video sākt automātiski
     video.pause();
+    video.currentTime = 0;
 
-    setTimeout(() => {
-        // After 2 seconds start playing
-        video.play();
-    }, 3100);
+    // Kad video ir gatavs (pat uz lēna interneta)
+    video.addEventListener('canplaythrough', function () {
+
+        // Tikai pēc tam gaidām 3 sekundes
+        setTimeout(() => {
+            video.play();
+        }, 3000);
+    }, { once: true });
 });
 
 // ===== VIDEO RESTART ON HOME NAVIGATION =====
@@ -664,7 +668,7 @@ function restartHomeVideo() {
         video.currentTime = 0;
         video.pause();
 
-        // Wait 2 seconds before playing
+        // Wait N seconds before playing
         setTimeout(() => {
             video.play().catch(error => {
                 console.log('Video play prevented:', error);
