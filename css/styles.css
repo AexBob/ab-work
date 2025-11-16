@@ -292,7 +292,7 @@ body {
     background: white;
     color: #3498db;
     border-bottom-color: #3498db;
-     /* border-radius: 7px; */
+    /* border-radius: 7px; */
 }
 
 .about-tab-btn.active i {
@@ -693,7 +693,7 @@ body {
 
 .skill-item-sidebar {
     padding: 12px 0;
-    border-bottom: 1px solid #f8f9fa;
+    border-bottom: 1px solid #f7f7f7;
     line-height: 1.5;
     color: #555;
     font-size: 1em;
@@ -701,9 +701,9 @@ body {
     padding-left: 25px;
 }
 
-.skill-item-sidebar:last-child {
+/* .skill-item-sidebar:last-child {
     border-bottom: none;
-}
+} */
 
 .skill-item-sidebar::before {
     content: "";
