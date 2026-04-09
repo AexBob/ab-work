@@ -161,6 +161,37 @@
     },
     "experience": [
       {
+        "period": "jan. – apr. 2026",
+        "position": "Dispečers",
+        "company": "Conexus Baltic Grid",
+        "duration": "3 mēneši",
+        "additionalInfo": [
+          {
+            "type": "text",
+            "content": "Apmācības laikā padziļināti apguvu Latvijas dabasgāzes pārvades sistēmas infrastruktūru, darbības principus un drošības prasības. Praktiskajā darbā strādāju pie dispečera pults cita dispečera uzraudzībā:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Darbs ar SCADA sistēmu, padziļināti apgūstot tās iespējas",
+              "Gāzes sistēmas parametru uzraudzība",
+              "Sakari ar tehniskajām struktūrām un partneriem",
+              "Datu pārbaude un atskaišu sagatavošana",
+              "Ieraksti operatīvajā žurnālā un operatīvo brīdinājumu nodošana",
+              "Dalība reālu trauksmes situāciju uzraudzībā"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "Darba laikā būtiski uzlaboju latviešu valodu un profesionālo komunikāciju tehniskajā vidē."
+          },
+          {
+            "type": "text",
+            "content": "Guvu pieredzi darbā maiņu režīmā, tostarp nakts maiņā."
+          }
+        ]
+      },
+      {
         "period": "2024 – 2025",
         "position": "Iespiedējs",
         "company": "Pro-Baltic",
