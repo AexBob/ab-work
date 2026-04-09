@@ -493,7 +493,7 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, opacity 0.3s ease;
-    opacity: 0;
+    opacity: 1;
     background: #f8f9fa;
     border-radius: 8px;
     padding: 0 15px;
@@ -502,8 +502,8 @@ body {
 .education-additional-content.active {
     max-height: 500px;
     opacity: 1;
-    padding: 15px;
-    margin-top: 10px;
+    padding: 0 15px;
+    /* margin-top: 10px; */
 }
 
 .education-additional-list {
@@ -1184,7 +1184,7 @@ body {
     font-size: 0.85em;
     font-weight: bold;
     font-style: italic;
-    padding: 5px 0;
+    padding: 5px 0 0 0;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1208,17 +1208,18 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, opacity 0.3s ease;
-    opacity: 0;
+    opacity: 1;
     background: #f8f9fa;
     border-radius: 8px;
     padding: 0 15px;
+    margin-top: 5px;
 }
 
 .experience-additional-content.active {
     max-height: 500px;
     opacity: 1;
-    padding: 12px 15px;
-    margin-top: 8px;
+    padding: 0 15px;
+    margin-top: 5px;
 }
 
 .experience-additional-list {
@@ -1244,7 +1245,7 @@ body {
 }
 
 .experience-text {
-    padding: 4px 0;
+    padding: 8px 0 0 0;
     color: #555;
     line-height: 1.5;
     margin: 0;
