@@ -347,7 +347,7 @@ body {
     background: #fff;
     border: 1px solid #e9ecef;
     border-radius: 10px;
-    padding: 18px;
+    padding: 18px 18px 15px 18px;
     margin: 10px 0;
     transition: all 0.3s ease;
     position: relative;
@@ -1206,20 +1206,23 @@ body {
 
 .experience-additional-content {
     max-height: 0;
+    margin-top: 10px;
     overflow: hidden;
     transition: max-height 0.4s ease, opacity 0.3s ease;
+    /* transition: max-height 0.4s ease, margin-top 0.4s ease,  opacity 0.3s ease; */
+
     opacity: 1;
     background: #f8f9fa;
     border-radius: 8px;
     padding: 0 15px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
 
 .experience-additional-content.active {
     max-height: 500px;
     opacity: 1;
     padding: 0 15px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .experience-additional-list {
@@ -1249,6 +1252,10 @@ body {
     color: #555;
     line-height: 1.5;
     margin: 0;
+}
+
+.experience-additional-content-inner>*:last-child {
+    padding-bottom: 8px;
 }
 
 .experience-additional-content-inner>* {
