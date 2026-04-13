@@ -78,7 +78,7 @@ function updateContent(data) {
 
         // Data (with check)
         if (data.about.experience) renderExperience(data.about.experience);
-        if (data.about.education && data.about.education.items) renderEducation(data.about.education.items);
+        if (data.about.education && data.about.education.items) renderEducation(data.about.education.items, data.about.education.subtitle);
         if (data.about.languages && data.about.languages.items) renderLanguages(data.about.languages.items);
         if (data.about.skills) renderSkills(data.about.skills);
         if (data.about.interests) renderInterests(data.about.interests);
@@ -169,36 +169,64 @@ function renderExperience(experience) {
     }
 }
 
-function renderEducation(educationItems) {
+function renderEducation(educationItems, subtitle) {
     const container = document.getElementById('education-list');
     if (!container) return;
 
-    container.innerHTML = educationItems.map((edu) => `
-        <div class="education-item">
-            <h4>${edu.degree}</h4>
-            <p class="education-meta">${edu.institution} • ${edu.period}</p>
-            ${edu.additionalInfo ? `
-                <div class="education-additional">
-                    <button class="education-toggle">
-                        <i class="fas fa-chevron-down"></i>
-                        Papildus informācija
-                    </button>
-                    <div class="education-additional-content">
-                        <ul class="education-additional-list">
-                            ${edu.additionalInfo.map((item, itemIndex) => {
-        const isGrantSubitem = itemIndex === 2 || itemIndex === 3;
-        if (isGrantSubitem) {
-            return `<li class="education-additional-item subitem">${item}</li>`;
-        } else {
-            return `<li class="education-additional-item">${item}</li>`;
-        }
-    }).join('')}
-                        </ul>
+    // Separate formal and additional education
+    const formalItems = educationItems.filter(item => item.type !== 'additional');
+    const additionalItems = educationItems.filter(item => item.type === 'additional');
+
+    let html = '';
+
+    // Render formal education (no subtitle before)
+    formalItems.forEach((edu, index) => {
+        html += `
+            <div class="education-item">
+                <h4>${edu.degree}</h4>
+                <p class="education-meta">${edu.institution} • ${edu.period}</p>
+                ${edu.additionalInfo ? `
+                    <div class="education-additional">
+                        <button class="education-toggle ${index === 0 ? 'attention-highlight' : ''}">
+                            <i class="fas fa-chevron-down"></i>
+                            Papildus informācija
+                        </button>
+                        <div class="education-additional-content">
+                            <ul class="education-additional-list">
+                                ${edu.additionalInfo.map((item, itemIndex) => {
+            const isGrantSubitem = itemIndex === 2 || itemIndex === 3;
+            if (isGrantSubitem) {
+                return `<li class="education-additional-item subitem">${item}</li>`;
+            } else {
+                return `<li class="education-additional-item">${item}</li>`;
+            }
+        }).join('')}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            ` : ''}
+                ` : ''}
+            </div>
+        `;
+    });
+
+    // Render additional education with subtitle if exists
+    if (additionalItems.length > 0) {
+        if (subtitle) {
+            html += `<h3 class="education-subtitle">${subtitle}</h3>`;
+        }
+
+        additionalItems.forEach((edu, index) => {
+            html += `
+        <div class="education-item course-item">
+            <h4>${edu.degree}</h4>
+            <p class="education-meta">${edu.institution}</p>
+            <p class="education-meta">${edu.period}</p>
         </div>
-    `).join('');
+    `;
+        });
+    }
+
+    container.innerHTML = html;
 
     // Setup toggles
     setupEducationToggles();

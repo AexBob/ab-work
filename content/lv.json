@@ -20,11 +20,12 @@
     },
     "education": {
       "title": "Izglītība",
+      "subtitle": "Papildu izglītība",
       "items": [
         {
           "degree": "Sociālo zinātņu maģistra grāds vadībzinātnē",
           "institution": "Transporta un sakaru institūts",
-          "period": "2003 – 2009",
+          "period": "2003–2009",
           "additionalInfo": [
             "Absolvēju ar izcilību.",
             "Saņēmu 2 grantus:",
@@ -36,11 +37,18 @@
         {
           "degree": "Radioelektronikas inženieris",
           "institution": "Rīgas Tehniskā koledža",
-          "period": "1991 – 1996",
+          "period": "1991–1996",
           "additionalInfo": [
             "5 gadu pilna inženiera programma",
             "Konkurss iestājējos: 4,5 cilvēki uz vietu"
           ]
+        },
+        {
+          "degree": "Digitālais mārketings un datu analīze",
+          "institution": "Google Ads un Google Analytics (80 stundas)",
+          "period": "Kompetenču centrs • 2025–2026",
+          "type": "additional",
+          "additionalInfo": []
         }
       ]
     },
@@ -96,7 +104,8 @@
             "Elektronisko un drošības iekārtu montāža un uzstādīšana (TV, kameras, seifi)",
             "Elektroiekārtu un vājstrāvas kabeļu uzstādīšana",
             "Biroja un ražošanas aprīkojuma tehniskā apkope un uzturēšana",
-            "Darbs ar instrumentiem un tehnisko remontu veikšana"
+            "Darbs ar instrumentiem un tehnisko remontu veikšana",
+            "Darbs ar SCADA sistēmām"
           ]
         },
         {
