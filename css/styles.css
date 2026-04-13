@@ -170,10 +170,15 @@ body {
 
 .alex h1 {
     font-size: 2.5em;
-    margin-bottom: 0px;
-    color: #2c3e50;
-    text-align: left;
+    font-weight: 700;
+    color: #1e3b58;
+    text-shadow: 0 1px 0 #ecf0f1;
+    opacity: 0.8;
+
+    color: rgba(86, 86, 86, 0.5);
+    text-shadow: 3px 4px 6px rgb(234, 234, 234), 0 0 0 #000, 1px 4px 6px rgb(224, 224, 224);
 }
+
 
 .alex>p {
     font-size: 1.2em;
@@ -544,7 +549,7 @@ body {
 .education-subtitle {
     font-size: 1.1em;
     font-weight: 600;
-    
+
     color: #6c757d;
     margin: 20px 0 10px 0;
     padding-bottom: 3px;
