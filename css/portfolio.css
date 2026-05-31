@@ -367,106 +367,7 @@
     border-radius: 8px;
 }
 
-/* ===== RESPONSIVE STYLES ===== */
-@media (max-width: 1200px) {
-    .video-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-    }
-}
 
-@media (max-width: 1024px) {
-    .video-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
-
-    .portfolio-grid {
-        width: 90%;
-    }
-
-    .gif-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .video-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    .gif-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-        gap: 15px !important;
-    }
-
-    .portfolio-tabs-nav {
-        flex-direction: column;
-    }
-
-    .portfolio-tab-btn {
-        flex-direction: row;
-        justify-content: flex-start;
-        text-align: left;
-        border-bottom: 1px solid #e9ecef;
-        border-left: 3px solid transparent;
-    }
-
-    .portfolio-tab-btn.active {
-        border-left-color: #3498db;
-        border-bottom-color: #e9ecef;
-    }
-
-    .portfolio-grid {
-        width: 100%;
-    }
-
-    .collage-wrapper {
-        cursor: crosshair;
-    }
-
-    .magnifier-glass {
-        width: 300px !important;
-        height: 300px !important;
-        border-width: 2px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .video-grid,
-    .gif-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .portfolio-tab-btn {
-        padding: 12px 15px;
-        font-size: 0.9em;
-    }
-
-    .play-overlay,
-    .play-btn,
-    .pause-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
-    }
-
-    .gif-item {
-        aspect-ratio: 16/9;
-    }
-
-    .collage-container {
-        padding: 10px 0;
-    }
-
-    .collage-wrapper {
-        border-radius: 8px;
-    }
-
-    .magnifier-glass {
-        width: 250px !important;
-        height: 250px !important;
-    }
-}
 
 /* ===== FLASH GRID STYLES ===== */
 .flash-grid {
@@ -668,30 +569,11 @@
     font-style: italic;
 }
 
-@media (max-width: 1200px) {
-    .flash-project-content {
-        grid-template-columns: 500px 1fr;
-        gap: 30px;
-    }
-}
 
-@media (max-width: 1024px) {
-    .flash-project-content {
-        grid-template-columns: 400px 1fr;
-        gap: 25px;
-    }
-}
 
-@media (max-width: 768px) {
-    .flash-grid {
-        width: 100% !important;
-    }
 
-    .flash-project-content {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-}
+
+
 
 /* ===== FLEXOGRAPHY STYLES ===== */
 .flexography-wrapper {
@@ -792,44 +674,7 @@
     object-fit: contain;
 }
 
-@media (max-width: 768px) {
-    .flexography-wrapper {
-        width: 100%;
-    }
 
-    .flexography-canvas {
-        padding: 25px;
-        border-radius: 10px;
-    }
-
-    .flexography-works {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .work-image-horizontal img {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .work-text p {
-        color: #555;
-        line-height: 1.6;
-        font-size: 1.1em;
-        margin-bottom: 10px;
-    }
-
-    .work-text p:first-child {
-        font-size: 1.2em;
-        color: #2c3e50;
-        margin-bottom: 15px;
-    }
-
-    .flexography-work-left .work-text,
-    .flexography-work-right .work-text {
-        min-height: auto;
-    }
-}
 
 /* ===== 3D MODELING STYLES ===== */
 .modeling3d-wrapper {
@@ -1096,39 +941,157 @@
     object-fit: contain;
 }
 
+/* =======================================================
+   RESPONSIVE DESIGN
+======================================================= */
+
+/* ---------- Tablets ---------- */
+
+@media (max-width: 1200px) {
+
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .gif-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        width: 100% !important;
+    }
+
+    .flash-grid {
+        width: 100%;
+    }
+
+    .flexography-wrapper,
+    .modeling3d-wrapper {
+        width: 100%;
+    }
+}
+
+
+/* ---------- Mobile ---------- */
+
 @media (max-width: 768px) {
+
+    .video-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .gif-grid {
+        grid-template-columns: 1fr !important;
+        padding: 20px;
+        gap: 20px !important;
+    }
+
+    .gif-item.ultra-wide {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .flash-project-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .flash-image-container {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+    }
+
+    .flash-image-container:hover {
+        height: auto;
+    }
+
+    .flash-banner-preview,
+    .flash-banner-video {
+        width: 100%;
+        height: auto;
+    }
+
+    .flash-featured-project,
+    .flash-banners-section {
+        padding: 20px;
+        margin: 10px 0;
+    }
+
+    .flexography-canvas {
+        padding: 20px;
+    }
+
+    .flexography-works {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .flexography-work-left,
+    .flexography-work-right {
+        flex: none;
+        width: 100%;
+    }
+
+    .work-images-horizontal {
+        flex-direction: column;
+    }
+
     .modeling3d-canvas {
-        padding: 25px;
+        padding: 20px;
     }
 
     .modeling3d-content {
         grid-template-columns: 1fr;
-        gap: 30px;
     }
 
     .modeling3d-renders-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
     }
 
-    .modeling3d-description {
-        padding: 0 10px;
+    .modeling3d-right {
+        gap: 15px;
+    }
+
+    .magnifier-glass {
+        display: none !important;
+    }
+
+    .video-modal-container,
+    .image-modal-container {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+    .video-modal-player,
+    .image-modal-content {
+        max-width: 100%;
+    }
+}
+
+
+/* ---------- Small phones ---------- */
+
+@media (max-width: 480px) {
+
+    .gif-grid,
+    .flash-featured-project,
+    .flash-banners-section,
+    .flexography-canvas,
+    .modeling3d-canvas {
+        padding: 15px;
+    }
+
+    .flash-project-title {
+        font-size: 1.2rem;
+    }
+
+    .flash-project-description {
+        font-size: 1rem;
     }
 
     .modeling3d-title {
-        font-size: 1.5em;
+        font-size: 1.05rem;
     }
 
     .modeling3d-subtitle {
-        font-size: 1em;
-        padding: 0 10px;
-    }
-
-    .sketchfab-iframe {
-        height: 400px;
-    }
-
-    .modeling3d-render-container {
-        height: 180px;
+        font-size: 0.95rem;
     }
 }

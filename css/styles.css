@@ -1023,179 +1023,6 @@ body {
     font-style: italic;
 }
 
-/* ===== MOBILE RESPONSIVENESS ===== */
-@media (max-width: 768px) {
-    .side-nav {
-        width: 60px;
-    }
-
-    .content {
-        margin-left: 60px;
-    }
-
-    .section {
-        padding: 30px 20px;
-    }
-
-    .alex {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-        padding: 50px 0;
-    }
-
-    .alex-image {
-        width: 300px;
-        height: 300px;
-        margin: 0;
-    }
-
-    .alex h1,
-    .alex>p,
-    .main-subtitle,
-    .personal-quote {
-        text-align: center;
-    }
-
-    .about-tabs-nav {
-        flex-direction: column;
-    }
-
-    .about-tab-btn {
-        text-align: left;
-        border-bottom: 1px solid #e9ecef;
-        border-left: 3px solid transparent;
-        flex: none;
-        min-width: auto;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 15px;
-    }
-
-    .about-tab-btn.active {
-        border-left-color: #3498db;
-        border-bottom-color: #e9ecef;
-    }
-
-    .experience-item {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
-    }
-
-    .experience-item-period-container {
-        min-width: auto;
-        text-align: center;
-    }
-
-    .experience-item-company {
-        font-size: 1.1em;
-    }
-
-    .experience-item-position {
-        font-size: 1em;
-    }
-
-    .education-item {
-        margin: 20px 0;
-        padding: 20px;
-    }
-
-    .education-section {
-        margin: 25px 0;
-    }
-
-    .language-bars {
-        max-width: 95%;
-    }
-
-    .language-name {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-
-    .language-level {
-        align-self: flex-start;
-    }
-
-    .skills-sidebar-layout {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .skills-categories-sidebar {
-        flex: none;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .skill-category-btn {
-        flex: 1;
-        min-width: 150px;
-        text-align: center;
-        padding: 15px;
-        min-height: 60px;
-        gap: 12px;
-    }
-
-    .skill-category-btn:hover,
-    .skill-category-btn.active {
-        transform: translateY(-2px);
-    }
-
-    .skills-content-area {
-        min-height: 300px;
-    }
-
-    .contact-cards {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .contact-card {
-        padding: 25px 20px;
-    }
-
-    #work-tab,
-    #education-tab,
-    #languages-tab,
-    #skills-tab {
-        padding: 0 10px;
-    }
-
-    .interest-items {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .interest-item {
-        min-width: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-tab-btn {
-        padding: 12px 10px;
-        font-size: 0.9em;
-    }
-
-    .skill-category-btn {
-        min-width: 120px;
-        font-size: 0.9em;
-        padding: 12px 10px;
-    }
-
-    .tab-btn {
-        padding: 10px 15px;
-        font-size: 0.9em;
-    }
-
-    .project-content {
-        padding: 20px;
-    }
-}
 
 /* ===== EXPERIENCE ADDITIONAL INFO ===== */
 .experience-additional {
@@ -1296,4 +1123,268 @@ body {
 /* ===== OPERA VIDEO CONTROLS FIX ===== */
 #detach-button-host {
     display: none !important;
+}
+
+/* =======================================================
+   RESPONSIVE DESIGN
+======================================================= */
+
+/* ---------- Large tablets ---------- */
+
+@media (max-width: 1200px) {
+
+    .section {
+        padding: 25px 30px;
+    }
+
+    .alex {
+        grid-template-columns: 2fr 4fr;
+        gap: 30px;
+    }
+
+    .alex-video {
+        height: 75vh;
+    }
+
+    .skills-categories-sidebar {
+        flex: 0 0 260px;
+    }
+
+    .contact-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ---------- Tablets ---------- */
+
+@media (max-width: 992px) {
+
+    .alex {
+        position: relative;
+        height: auto;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .alex-video-container {
+        justify-content: center;
+    }
+
+    .alex-video {
+        max-width: 450px;
+        width: 100%;
+        height: auto;
+    }
+
+    .alex-content {
+        text-align: center;
+    }
+
+    .main-subtitle {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .personal-quote {
+        max-width: 100%;
+    }
+
+    .skills-sidebar-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skills-categories-sidebar {
+        flex: none;
+    }
+
+    .about-tabs-content {
+        padding: 20px;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .experience-item-period-container {
+        width: 100%;
+        padding-right: 0;
+        text-align: left;
+    }
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    .side-nav {
+        width: 100%;
+        height: 65px;
+        top: auto;
+        bottom: 0;
+        flex-direction: row;
+    }
+
+    .side-nav ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .side-nav li {
+        margin: 0;
+    }
+
+    .side-nav a {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-bottom: 80px;
+    }
+
+    .content::before {
+        left: 0;
+    }
+
+    .section {
+        padding: 20px 15px;
+    }
+
+    #home.active {
+        display: block;
+    }
+
+    .alex {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: auto;
+        gap: 15px;
+    }
+
+    .alex-video {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .alex h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .main-subtitle {
+        font-size: 1.15rem;
+        text-align: center;
+    }
+
+    .personal-quote {
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .alex-actions {
+        text-align: center;
+    }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-tabs-nav,
+    .portfolio-tabs-nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .about-tab-btn,
+    .portfolio-tab-btn {
+        min-width: 120px;
+        flex: 0 0 auto;
+    }
+
+    .about-tabs-content {
+        padding: 10px;
+    }
+
+    .about-tab-pane {
+        padding: 10px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+
+    .contact-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+    }
+
+    .skills-content-area {
+        padding: 15px;
+    }
+
+    .interest-items {
+        flex-direction: column;
+    }
+
+    .interest-item {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+
+/* ---------- Small phones ---------- */
+
+@media (max-width: 480px) {
+
+    .alex h1 {
+        font-size: 1.7rem;
+    }
+
+    .main-subtitle {
+        font-size: 1rem;
+    }
+
+    .personal-quote {
+        font-size: 0.95rem;
+    }
+
+    .download-btn {
+        font-size: 0.85rem;
+    }
+
+    .about-tab-btn span,
+    .portfolio-tab-btn span {
+        font-size: 0.8rem;
+    }
 }
